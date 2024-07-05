@@ -1,0 +1,88 @@
+import {React, useEffect} from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Layout from '../components/Layout';
+import Home from '../pages/Home';
+import Data_Enrichment from '../pages/Data_Enrichment';
+import Search from '../pages/Search';
+import Sequences from '../pages/Sequences';
+import Email from '../pages/Email';
+import Calls from '../pages/Calls';
+import Meetings from '../pages/Meetings';
+import Conversations from '../pages/Conversations';
+import Deals from '../pages/Deals';
+import Tasks from '../pages/Tasks';
+import Plays from '../pages/Plays';
+import Analytics from '../pages/Analytics';
+import Settings from '../pages/Settings';
+
+const App = () => {
+        const location = useLocation();
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        document.title = "Home - SpillWord";
+        break;
+      case "/Search":
+        document.title = "Home - SpillWord";
+        break;
+      case "/Data_Enrichment":
+        document.title = "Enrichment - SpillWord";
+        break;
+      case "/Sequences":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Email":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Calls":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Meentings":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Conversations":
+        document.title = "Conversation - SpillWord";
+        break;
+      case "/Deals":
+        document.title = "Conversation - SpillWord";
+        break;
+      case "/Tasks":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Plays":
+        document.title = "Plays - SpillWord";
+        break;
+      case "/Analytics":
+        document.title = "Engagement - SpillWord";
+        break;
+      case "/Settings":
+        document.title = "You - SpillWord";
+        break;
+      default:
+        document.title = "SpillWord";
+    }
+  }, [location]);
+
+    return (
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="Data_Enrichment" element={<Data_Enrichment/>} />
+                    <Route path="Search" element={<Search />} />
+                    <Route path="Sequences" element={<Sequences />} />
+                    <Route path="Email" element={<Email />} />
+                    <Route path="Calls" element={<Calls />} />
+                    <Route path="Meetings" element={<Meetings />} />
+                    <Route path="Conversations" element={<Conversations />} />
+                    <Route path="Deals" element={<Deals />} />
+                    <Route path="Tasks" element={<Tasks />} />
+                    <Route path="Plays" element={<Plays />} />
+                    <Route path="Analytics" element={<Analytics />} />
+                    <Route path="Settings" element={<Settings />} />
+                </Route>
+            </Routes>
+    );
+};
+
+export default App;
