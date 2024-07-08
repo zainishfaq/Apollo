@@ -136,7 +136,7 @@ const Sidebar = () => {
                         <span className={`transition-all duration-300 text-sm font-semibold ${isCollapsed ? 'hidden' : ''}`}>Plays</span>
                     </li>
                 </NavLink>
-                <NavLink to='/Analytics' className="flex items-center">
+                <NavLink to='/Analytics/Dashboard' className="flex items-center">
                     <li className={`px-${isCollapsed ? '4' : '6'} py-2 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer w-full ${location.pathname === '/Analytics' ? 'bg-blue-100' : ''}`}>
                         <VscGraph className="text-gray-600 mr-3" style={{ width: ICON_SIZE, height: ICON_SIZE, minWidth: ICON_SIZE }} />
                         <span className={`transition-all duration-300 text-sm font-semibold ${isCollapsed ? 'hidden' : ''}`}>Analytics</span>
