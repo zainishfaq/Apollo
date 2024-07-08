@@ -12,12 +12,14 @@ import Conversations from "../pages/Conversations";
 import Deals from "../pages/Deals";
 import Tasks from "../pages/Tasks";
 import Plays from "../pages/Plays";
-import Analytics from "../pages/Analytics";
 import Settings from "../pages/Settings";
 import DataHealthCenter from "../pages/DataEnrichment/DataHealthCenter";
 import CRM from "../pages/DataEnrichment/CRM";
 import CSV from "../pages/DataEnrichment/CSV";
 import JobChangesAlert from "../pages/DataEnrichment/JobChangesAlert";
+import Analytics from "../components/Analytics";
+import Dashboard from "../pages/Analytics/Dashboard";
+import Reports from "../pages/Analytics/Reports";
 
 const App = () => {
   const location = useLocation();
@@ -88,7 +90,11 @@ const App = () => {
         <Route path="Deals" element={<Deals />} />
         <Route path="Tasks" element={<Tasks />} />
         <Route path="Plays" element={<Plays />} />
-        <Route path="Analytics" element={<Analytics />} />
+        <Route path="Analytics" element={<Analytics />}>
+          <Route index element={<Dashboard />} />
+          <Route path='Dashboard' element={<Dashboard />} />
+          <Route path="Reports" element={<Reports />} />
+          </Route>
         <Route path="Settings" element={<Settings />} />
       </Route>
     </Routes>
