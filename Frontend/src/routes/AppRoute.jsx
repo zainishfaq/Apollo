@@ -1,22 +1,26 @@
-import {React, useEffect} from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Layout from '../components/Layout';
-import Home from '../pages/Home';
-import Data_Enrichment from '../pages/Data_Enrichment';
-import Search from '../pages/Search';
-import Sequences from '../pages/Sequences';
-import Email from '../pages/Email';
-import Calls from '../pages/Calls';
-import Meetings from '../pages/Meetings';
-import Conversations from '../pages/Conversations';
-import Deals from '../pages/Deals';
-import Tasks from '../pages/Tasks';
-import Plays from '../pages/Plays';
-import Analytics from '../pages/Analytics';
-import Settings from '../pages/Settings';
+import { React, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Layout from "../components/Layout";
+import Home from "../pages/Home";
+import Data_Enrichment from "../components/DataEnrichment";
+import Search from "../pages/Search";
+import Sequences from "../pages/Sequences";
+import Email from "../pages/Email";
+import Calls from "../pages/Calls";
+import Meetings from "../pages/Meetings";
+import Conversations from "../pages/Conversations";
+import Deals from "../pages/Deals";
+import Tasks from "../pages/Tasks";
+import Plays from "../pages/Plays";
+import Analytics from "../pages/Analytics";
+import Settings from "../pages/Settings";
+import DataHealthCenter from "../pages/DataEnrichment/DataHealthCenter";
+import CRM from "../pages/DataEnrichment/CRM";
+import CSV from "../pages/DataEnrichment/CSV";
+import JobChangesAlert from "../pages/DataEnrichment/JobChangesAlert";
 
 const App = () => {
-        const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     switch (location.pathname) {
@@ -64,25 +68,31 @@ const App = () => {
     }
   }, [location]);
 
-    return (
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="Data_Enrichment" element={<Data_Enrichment/>} />
-                    <Route path="Search" element={<Search />} />
-                    <Route path="Sequences" element={<Sequences />} />
-                    <Route path="Email" element={<Email />} />
-                    <Route path="Calls" element={<Calls />} />
-                    <Route path="Meetings" element={<Meetings />} />
-                    <Route path="Conversations" element={<Conversations />} />
-                    <Route path="Deals" element={<Deals />} />
-                    <Route path="Tasks" element={<Tasks />} />
-                    <Route path="Plays" element={<Plays />} />
-                    <Route path="Analytics" element={<Analytics />} />
-                    <Route path="Settings" element={<Settings />} />
-                </Route>
-            </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="Data_Enrichment" element={<Data_Enrichment />}>
+          <Route index element={<DataHealthCenter />} />
+          <Route path="DataHealthCenter" element={<DataHealthCenter />} />
+          <Route path="CRM" element={<CRM />} />
+          <Route path="CSV" element={<CSV />} />
+          <Route path="JobChangeAlerts" element={<JobChangesAlert />} />
+        </Route>
+        <Route path="Search" element={<Search />} />
+        <Route path="Sequences" element={<Sequences />} />
+        <Route path="Email" element={<Email />} />
+        <Route path="Calls" element={<Calls />} />
+        <Route path="Meetings" element={<Meetings />} />
+        <Route path="Conversations" element={<Conversations />} />
+        <Route path="Deals" element={<Deals />} />
+        <Route path="Tasks" element={<Tasks />} />
+        <Route path="Plays" element={<Plays />} />
+        <Route path="Analytics" element={<Analytics />} />
+        <Route path="Settings" element={<Settings />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;
