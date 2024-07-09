@@ -18,7 +18,7 @@ function Home() {
       <div
         className={`text-2xl font-medium bg-white text-black mt-8  ${
           isCollapsed ? "ml-10" : "ml-56"
-        } py-2 border-b border-gray-200 px-4`}
+        }  -mr-4 py-2 border-b border-gray-200 px-4`}
       >
         Home
       </div>
@@ -135,7 +135,7 @@ function Home() {
         </div>
       </div>
 
-      <div className={`text-2xl font-medium shadow-lg rounded-lg bg-white text-black mt-5  ${isCollapsed ? "ml-16" : "ml-64"} ${isCollapsed ? "mr-2" : "mr-5"}  border-b p-3 border-gray-200 px-2 py-2`}>
+      <div className={`text-2xl font-medium shadow-lg rounded-lg bg-white text-black mt-5  ${isCollapsed ? "ml-16" : "ml-64"} ${isCollapsed ? "mr-2" : "mr-5"}   p-3  px-2 py-2 z-50`}>
         <h3 className="mb-5 text-xl font-semibold">
             WorkSrteam
         </h3>

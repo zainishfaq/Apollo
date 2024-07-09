@@ -11,7 +11,7 @@ function DataHealthCenter() {
   const data1 = {
     datasets: [
       {
-        data: [50, 50],
+        data: [100, 0],
         backgroundColor: ["#d3d3d3", "#4caf50"],
         borderWidth: 0,
       },
