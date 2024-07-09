@@ -137,7 +137,7 @@ function Home() {
 
       <div className={`text-2xl font-medium shadow-lg rounded-lg bg-white text-black mt-5  ${isCollapsed ? "ml-16" : "ml-64"} ${isCollapsed ? "mr-2" : "mr-5"}   p-3  px-2 py-2 z-50`}>
         <h3 className="mb-5 text-xl font-semibold">
-            WorkSrteam
+            WorkStream
         </h3>
          <ul className="flex flex-row text-sm gap-4">
           <li>
