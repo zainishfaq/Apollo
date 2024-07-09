@@ -3,9 +3,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "../pages/Home";
 import Data_Enrichment from "../components/DataEnrichment";
-import Search from "../pages/Search";
+import Search from "../components/Search";
 import Sequences from "../pages/Sequences";
-import Email from "../pages/Email";
+import Email from "../components/Email";
 import Calls from "../pages/Calls";
 import Meetings from "../pages/Meetings";
 import Conversations from "../pages/Conversations";
@@ -20,6 +20,11 @@ import JobChangesAlert from "../pages/DataEnrichment/JobChangesAlert";
 import Analytics from "../components/Analytics";
 import Dashboard from "../pages/Analytics/Dashboard";
 import Reports from "../pages/Analytics/Reports";
+import PeopleSearch from "../pages/SearchSideBar/PeopleSearch";
+import CompaniesSearch from "../pages/SearchSideBar/CompaniesSearch";
+import SavedListSearch from "../pages/SearchSideBar/SavedListSearch";
+import FilterTemplate from "../pages/EMail/Filter";
+import EmailTemplate from "../pages/EMail/Template";
 
 const App = () => {
   const location = useLocation();
@@ -81,9 +86,18 @@ const App = () => {
           <Route path="CSV" element={<CSV />} />
           <Route path="JobChangeAlerts" element={<JobChangesAlert />} />
         </Route>
-        <Route path="Search" element={<Search />} />
+        <Route path="Search" element={<Search />}>
+          <Route index element={<PeopleSearch />} />
+          <Route path="PeopleSearch" element={<PeopleSearch />} />
+          <Route path="CompaniesSearch" element={<CompaniesSearch />} />
+          <Route path="SavedListSearch" element={<SavedListSearch />} />
+        </Route>
         <Route path="Sequences" element={<Sequences />} />
-        <Route path="Email" element={<Email />} />
+        <Route path="Email" element={<Email />}>
+          <Route index element={<FilterTemplate />} />
+          <Route path="FilterTemplate" element={<FilterTemplate />} />
+          <Route path="EmailTemplate" element={<EmailTemplate />} />
+        </Route>
         <Route path="Calls" element={<Calls />} />
         <Route path="Meetings" element={<Meetings />} />
         <Route path="Conversations" element={<Conversations />} />
@@ -92,9 +106,9 @@ const App = () => {
         <Route path="Plays" element={<Plays />} />
         <Route path="Analytics" element={<Analytics />}>
           <Route index element={<Dashboard />} />
-          <Route path='Dashboard' element={<Dashboard />} />
+          <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Reports" element={<Reports />} />
-          </Route>
+        </Route>
         <Route path="Settings" element={<Settings />} />
       </Route>
     </Routes>
