@@ -2,22 +2,23 @@ import React from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { useSidebarCollapseContext } from "../Context/SidebarCollapseContext";
-import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
+import { NavLink, Outlet, useLocation } from "react-router-dom"; // Import NavLink from react-router-dom
 
 function Home() {
   const { isCollapsed } = useSidebarCollapseContext();
 
   // Function to determine if NavLink should have active styles
   const isActiveNavLink = (path) => {
-    return window.location.pathname === path;
-  };
+    return location.pathname.startsWith(path);
+
+};
 
   return (
     <>
       <div
         className={`text-2xl font-medium bg-white text-black mt-8  ${
           isCollapsed ? "ml-10" : "ml-56"
-        } -mr-4 ml-56 py-2 border-b border-gray-200 px-4`}
+        } py-2 border-b border-gray-200 px-4`}
       >
         Home
       </div>
@@ -134,7 +135,7 @@ function Home() {
         </div>
       </div>
 
-      <div className={`text-2xl font-medium shadow-lg rounded-lg bg-white text-black mt-5  ${isCollapsed ? "ml-16" : "ml-64"} ${isCollapsed ? "mr-2" : "mr-5"}  border-b p-3 border-gray-200 px-4 py-4`}>
+      <div className={`text-2xl font-medium shadow-lg rounded-lg bg-white text-black mt-5  ${isCollapsed ? "ml-16" : "ml-64"} ${isCollapsed ? "mr-2" : "mr-5"}  border-b p-3 border-gray-200 px-2 py-2`}>
         <h3 className="mb-5 text-xl font-semibold">
             WorkSrteam
         </h3>
@@ -181,6 +182,10 @@ function Home() {
           </li>
         </ul>
       </div>
+
+      <div className="mt-0 ml-60">
+        <Outlet />
+     </div>
     </>
   );
 }
