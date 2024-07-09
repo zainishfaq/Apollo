@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
@@ -9,16 +9,25 @@ function Analytics() {
     const isActiveNavLink = (path) => {
         return location.pathname.startsWith(path);
     };
-  return (
-   <> <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+
+    // Determine the button text based on the current path
+    const getButtonText = () => {
+        if (isActiveNavLink('/Analytics/Reports')) {
+            return 'Create Report';
+        }
+        return 'Create Dashboard';
+    };
+
+    return (
+        <>
+            <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
                 <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-medium text-black mt-4">Analytics</h2>
                         <div className="flex gap-4 mt-6 mr-3">
-                            <button className="flex items-center bg-gray-200 text-sm 
-                            text-gray-600 px-3 py-2 rounded-lg hover:bg-blue-300"><span  className="mr-1 text-gray-600 px-2 rounded-md"><CiLock /></span>
-                                Create Dashboard
-                                
+                            <button className="flex items-center bg-gray-200 text-sm text-gray-600 px-3 py-2 rounded-lg hover:bg-blue-300">
+                                <span className="mr-1 text-gray-600 px-2 rounded-md"><CiLock /></span>
+                                {getButtonText()}
                             </button>
                         </div>
                     </div>
@@ -41,7 +50,6 @@ function Analytics() {
                                 Reports
                             </NavLink>
                         </li>
-                       
                     </ul>
                 </div>
             </div>
@@ -50,7 +58,7 @@ function Analytics() {
                 <Outlet />
             </div>
         </>
-  );
+    );
 }
 
-export default Analytics
+export default Analytics;
