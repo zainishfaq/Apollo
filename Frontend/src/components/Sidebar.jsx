@@ -14,15 +14,13 @@ import { BsLightningCharge } from "react-icons/bs";
 import { VscGraph } from "react-icons/vsc";
 import { IoSettingsOutline } from "react-icons/io5";
 import SpillWord from "../assets/spillword icons.png";
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
 
 const Sidebar = () => {
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const { isCollapsed, toggleSidebar } = useSidebarCollapseContext();
     const ICON_SIZE = "1.25rem";
     const location = useLocation();
 
-    const toggleSidebar = () => {
-        setIsCollapsed(!isCollapsed);
-    };
 
     const Divider = () => (
         isCollapsed && <div className="border-t border-gray-200 my-2 mx-2"></div>
@@ -38,7 +36,7 @@ const Sidebar = () => {
             </div>
             <Divider />
             <ul className={`flex flex-col mt-3 gap-y-1 flex-grow overflow-y-auto ${isCollapsed ? 'h-full' : 'scrollbar'}`}>
-                <NavLink to='/' className="flex items-center">
+                <NavLink to='/Home/RecentReplies' className="flex items-center">
                     <li className={`px-${isCollapsed ? '4' : '6'} py-2 px-2 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer w-full ${location.pathname === '/' ? 'bg-blue-100' : ''}`}>
                         <LuHome className="text-gray-600 mr-3" style={{ width: ICON_SIZE, height: ICON_SIZE, minWidth: ICON_SIZE }} />
                         <span className={`transition-all duration-300 text-sm font-semibold ${isCollapsed ? 'hidden' : ''}`}>Home</span>
@@ -154,3 +152,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

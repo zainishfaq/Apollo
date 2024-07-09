@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { IoEyeOutline } from "react-icons/io5";
 import { BsStopwatch } from "react-icons/bs";
+import { useSidebarCollapseContext } from "../../Context/SidebarCollapseContext";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function DataHealthCenter({ isSidebarOpen }) {
+function DataHealthCenter() {
   const data1 = {
     datasets: [
       {
-        data: [50, 50],
+        data: [100, 0],
         backgroundColor: ["#d3d3d3", "#4caf50"],
         borderWidth: 0,
       },
@@ -38,9 +39,11 @@ function DataHealthCenter({ isSidebarOpen }) {
 
   const Divider = () => <div className="border-t border-gray-200 my-2 mx-2"></div>;
 
+  const { isCollapsed } = useSidebarCollapseContext();
+
   return (
     <>
-      <div className={`mt-5 ${isSidebarOpen ? "ml-64" : ""}`}>
+      <div className={`mt-5 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
         <h1 className="text-xl font-semibold">Contacts Data Health</h1>
 
         <div className="flex flex-row gap-3 mt-5">
@@ -86,13 +89,13 @@ function DataHealthCenter({ isSidebarOpen }) {
         </div>
       </div>
 
-      <div className={`flex gap-10 -mt-2 ${isSidebarOpen ? "ml-64" : ""}`}>
+      <div className={`flex gap-10 -mt-2 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
         <div className="w-1/2 bg-white rounded-b-md shadow-lg flex justify-between border-t-2 border-gray-200">
           <button className="flex items-center m-5 text-blue-600 font-semibold text-sm">
             <IoEyeOutline className="mr-2" />
             View Contacts
           </button>
-          <button className="flex items-center m-5 ml-48 text-blue-600 font-semibold text-sm">
+          <button className={`flex items-center m-5 ${isCollapsed ? "ml-32" : "ml-40"} text-blue-600 font-semibold text-sm`}>
             <BsStopwatch className="mr-2" />
             View Schedule
           </button>
@@ -103,7 +106,7 @@ function DataHealthCenter({ isSidebarOpen }) {
             <IoEyeOutline className="mr-2" />
             View Contacts
           </button>
-          <button className="flex items-center m-5 ml-48 text-blue-600 font-semibold text-sm">
+          <button className={`flex items-center m-5 ${isCollapsed ? "ml-32" : "ml-40"} text-blue-600 font-semibold text-sm`}>
             <BsStopwatch className="mr-2" />
             View Schedule
           </button>
@@ -111,10 +114,12 @@ function DataHealthCenter({ isSidebarOpen }) {
         </div>
       </div>
 
-      <div className={`text-xl font-semibold mt-10 ${isSidebarOpen ? "ml-64" : ""}`}>Total available contacts</div>
+      <div className={`text-xl font-semibold mt-10 ${isCollapsed ? "-ml-44" : "ml-5"}`}>
+        Total available contacts
+      </div>
 
-      <div className={`flex mt-5 gap-3 ${isSidebarOpen ? "ml-64" : ""}`}>
-        <div className="w-7/12% bg-white shadow-lg rounded-lg p-3 flex flex-col h-96">
+      <div className={`flex mt-5 gap-3 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
+        <div className="w-7/12 bg-white shadow-lg rounded-lg p-3 flex flex-col h-96">
           <div className="flex justify-between items-center mb-5">
             <h2 className="font-semibold text-lg">Personas</h2>
             <ul className="flex gap-2 text-gray-800">
@@ -146,7 +151,7 @@ function DataHealthCenter({ isSidebarOpen }) {
           </div>
           <div className="flex flex-col items-center mt-20">
             <h3 className="font-semibold text-lg">Total Contacts</h3>
-            <p className="text-center text-gray-800 mt-2 o-2">
+            <p className="text-center text-gray-800 mt-2 ">
               Add personas and/or connect your CRM to view the total available market for contacts
             </p>
             <button className="mt-5 px-4 py-2 bg-white  text-black border border-black hover:text-blue-500 rounded-md">
