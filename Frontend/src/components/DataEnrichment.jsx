@@ -1,17 +1,27 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
 
 function Data_Enrichment() {
     const location = useLocation();
+    const { isCollapsed } = useSidebarCollapseContext();
 
     // Function to determine if a NavLink should be active
     const isActiveNavLink = (path) => {
         return location.pathname.startsWith(path);
+
     };
+
+    const getButtonText = () => {
+        if (isActiveNavLink('/Data_Enrichment/DataHealthCenter')) {
+            return 'Schedule enrichment';
+        }else
+        return 'Create Dashboard';
+    };
 
     return (
         <>
-            <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+            <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}> {/* Position fixed for the navigation bar */}
                 <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-medium text-black mt-4">Data Enrichments</h2>
