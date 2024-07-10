@@ -1,6 +1,7 @@
 import React from 'react';
 import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext'
 
 function Analytics() {
     const location = useLocation();
@@ -18,9 +19,11 @@ function Analytics() {
         return 'Create Dashboard';
     };
 
+    const { isCollapsed } = useSidebarCollapseContext();
+
     return (
         <>
-            <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+            <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0  bg-white z-40`}> {/* Position fixed for the navigation bar */}
                 <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-medium text-black mt-4">Analytics</h2>
