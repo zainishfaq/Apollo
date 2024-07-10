@@ -25,7 +25,7 @@ const OwnerFilter = ({ selectedOwner, handleOwnerChange }) => {
             type="text"
             value={selectedOwner}
             onChange={handleOwnerChange}
-            className="w-52 p-1 border border-gray-200 m-5 text-sm hover:border-blue-500 hover:text-blue-500 focus:outline-none"
+            className="w-52 p-1 border border-gray-200 m-5 ml-8 text-sm hover:border-blue-500 hover:text-blue-500 focus:outline-none"
             readOnly
           />
         </div>
