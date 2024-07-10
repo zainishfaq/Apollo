@@ -4,6 +4,12 @@ import axios from "axios";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/solid"; // Make sure to import the icon
+import { MdRemoveRedEye } from "react-icons/md";
+import { IoPersonAddOutline } from "react-icons/io5";
+import { IoBagHandle } from "react-icons/io5";
+import { CiSliderVertical } from "react-icons/ci";
+import { MdOutlinePeople } from "react-icons/md";
+import { FaRegBuilding } from "react-icons/fa";
 import {
   MdEmail,
   MdList,
@@ -26,6 +32,8 @@ import { MdFilterListOff } from "react-icons/md";
 import TotalSearchEmail from "./TotalEmail";
 import ScheduleSearchEmail from "./ScheduleEmail";
 import NetNewEmail from "./NetNewEmail";
+import { useSidebarCollapseContext } from "../../Context/SidebarCollapseContext";
+
 
 function PeopleSearch() {
   const [selectedEmails, setSelectedEmails] = useState([]);
@@ -230,62 +238,180 @@ function PeopleSearch() {
       title: "Lists",
       icon: <MdList className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.lists.map((l) => ({ value: l, label: l }))}
-          value={filter.list}
-          onChange={(selectedOption) =>
-            handleFilterChange("list", selectedOption?.value || "")
-          }
-          placeholder="Select list..."
-        />
+        <div className="filter-content">
+          <div className="tabs flex justify-between">
+            <button className="text-blue-800 flex flex-row">
+              {" "}
+              <span className="px-1">
+                <MdOutlinePeople></MdOutlinePeople>
+              </span>
+              People
+            </button>
+
+            <button className="text-blue-800 flex flex-row">
+              <span className="px-1">
+                <FaRegBuilding></FaRegBuilding>
+              </span>
+              Companies
+            </button>
+          </div>
+          <hr className="py-2" />
+          <div className="dropdown py-2">
+            <label className="text-blue-800">Include lists</label>
+            <Select
+              options={filterOptions.lists.map((l) => ({ value: l, label: l }))}
+              value={filter.list}
+              onChange={(selectedOption) =>
+                handleFilterChange("list", selectedOption?.value || "")
+              }
+              placeholder="Select list..."
+            />
+          </div>
+          <div className="advanced-settings py-3">
+            <a href="#" className="text-blue-800">
+              Advanced settings
+            </a>
+          </div>
+        </div>
       ),
       filterKey: "list",
     },
     {
-      title: "Country",
+      title: "Persona",
       icon: <MdDateRange className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.countries}
-          value={filter.country}
-          onChange={(selectedOption) =>
-            handleFilterChange("country", selectedOption?.value || "")
-          }
-          placeholder="Select country..."
-        />
+        <div className="">
+          <div className="tabs flex flex-col justify-between">
+            <button className="bg-blue-500 text-white border px-2 py-2 mx-2 my-2 hover:bg-blue-800 ">
+              Create Persona with AI
+            </button>
+            <button className="text-blue-800 border px-2 py-2 mx-2  hover:bg-blue-200">
+              Create Persona manually
+            </button>
+          </div>
+        </div>
       ),
-      filterKey: "country",
+      filterKey: "persona",
     },
     {
-      title: "Industry",
+      title: "Email Status",
       icon: <MdError className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.industries}
-          value={filter.industry}
-          onChange={(selectedOption) =>
-            handleFilterChange("industry", selectedOption?.value || "")
-          }
-          placeholder="Select industry..."
-        />
+        <div>
+          <h3>Safe to send</h3>
+          <label className="flex items-center p-2 hover:bg-gray-200 ">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className="bg-green-300 rounded">Likely to engage</button>
+          </label>
+          <label className="flex items-center p-2 hover:bg-gray-200">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className="bg-green-300 rounded">Verify</button>
+          </label>
+          <hr />
+          <h3 className="py-2">Send With caution</h3>
+          <label className="flex items-center p-2 hover:bg-gray-200">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className="bg-gray-100 rounded">Unverified?</button>
+          </label>
+          <hr />
+          <h3 className="py-2">Do not send</h3>
+          <label className="flex items-center p-2 hover:bg-gray-200">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className="bg-orange-200 rounded">Updated Required</button>
+          </label>
+          <label className="flex items-center p-2 hover:bg-gray-200">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className="bg-red-200 rounded">Unavailable</button>
+          </label>
+        </div>
       ),
-      filterKey: "industry",
+      filterKey: "emailstatus",
     },
     {
-      title: "Companies",
+      title: "Job Title",
       icon: <MdBusiness className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.companies}
-          value={filter.company}
-          onChange={(selectedOption) =>
-            handleFilterChange("company", selectedOption?.value || "")
-          }
-          placeholder="Type to search companies..."
-          onInputChange={(inputValue) =>
-            handleFilterChange("company", inputValue)
-          }
-        />
+        <div>
+          <div className="border my-2 flex-col ">
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Likely to engage</button>
+            </label>
+            <label className="flex items-center w-full p-2 hover:bg-gray-200 ">
+              <Select
+                options={[
+                  { value: "", label: "Select email..." },
+                  ...emailOptions,
+                ]}
+                value={selectedEmails.map((email) => ({
+                  value: email,
+                  label: email,
+                }))}
+                placeholder="Specify email..."
+              />
+            </label>
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Is not any of</button>
+            </label>
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Included past job</button>
+            </label>
+          </div>
+          <label className="flex items-center p-2 bg-gray-200 hover:bg-white ">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className=" rounded">Is Known</button>
+          </label>
+          <label className="flex items-center bg-gray-200 p-2 hover:bg-white ">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className=" rounded">Is Unknown</button>
+          </label>
+        </div>
+      ),
+      filterKey: "jobtitle",
+    },
+    {
+      title: "Company",
+      icon: <MdBusiness className="mr-2" />,
+      content: (
+        <div>
+          <div className="border my-2 flex-col ">
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Likely to engage</button>
+            </label>
+            <label className="flex items-center w-full p-2 hover:bg-gray-200 ">
+              <Select
+                options={[
+                  { value: "", label: "Select email..." },
+                  ...emailOptions,
+                ]}
+                value={selectedEmails.map((email) => ({
+                  value: email,
+                  label: email,
+                }))}
+                placeholder="Specify email..."
+              />
+            </label>
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Is not any of</button>
+            </label>
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Included past job</button>
+            </label>
+          </div>
+          <label className="flex items-center p-2 bg-gray-200 hover:bg-white ">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className=" rounded">Is Known</button>
+          </label>
+          <label className="flex items-center bg-gray-200 p-2 hover:bg-white ">
+            <input type="checkbox" value="Inactive" className="mr-2" />
+            <button className=" rounded">Is Unknown</button>
+          </label>
+        </div>
       ),
       filterKey: "company",
     },
@@ -293,14 +419,57 @@ function PeopleSearch() {
       title: "Location",
       icon: <MdBusiness className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.locations}
-          value={filter.location}
-          onChange={(selectedOption) =>
-            handleFilterChange("location", selectedOption?.value || "")
-          }
-          placeholder="Select location..."
-        />
+        // <Select
+        //   options={filterOptions.locations}
+        //   value={filter.location}
+        //   onChange={(selectedOption) =>
+        //     handleFilterChange("location", selectedOption?.value || "")
+        //   }
+        //   placeholder="Select location..."
+        // />
+        <div className="flex flex-col">
+           <div className="tabs flex justify-between">
+            <button className="text-blue-800 flex flex-row">
+              {" "}
+              <span className="px-1">
+                <MdOutlinePeople></MdOutlinePeople>
+              </span>
+              Contact
+            </button>
+
+            <button className="text-blue-800 flex flex-row">
+              <span className="px-1">
+                <FaRegBuilding></FaRegBuilding>
+              </span>
+              Account HQ
+            </button>
+          </div>
+          <hr className="py-2" />
+          <div className="border my-2 flex-col ">
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Select Region</button>
+            </label>
+            <label className="flex items-center w-full p-2 hover:bg-gray-200 ">
+              <Select
+                options={[
+                  { value: "", label: "Select email..." },
+                  ...emailOptions,
+                ]}
+                value={selectedEmails.map((email) => ({
+                  value: email,
+                  label: email,
+                }))}
+                placeholder="Enter Location..."
+              />
+            </label>
+            <label className="flex items-center p-2 hover:bg-gray-200 ">
+              <input type="checkbox" value="Inactive" className="mr-2" />
+              <button className=" rounded">Is not any of</button>
+            </label>
+            
+          </div>
+        </div>
       ),
       filterKey: "location",
     },
@@ -308,14 +477,16 @@ function PeopleSearch() {
       title: "Buying Intent",
       icon: <MdBusiness className="mr-2" />,
       content: (
-        <Select
-          options={filterOptions.buyingIntents}
-          value={filter.buyingIntent}
-          onChange={(selectedOption) =>
-            handleFilterChange("buyingIntent", selectedOption?.value || "")
-          }
-          placeholder="Select buying intent..."
-        />
+        <div className="">
+        <div className="tabs flex flex-col justify-between">
+          <button className="text-blue-800 border px-2 py-2 mx-2  hover:bg-blue-200">
+            Get Started
+          </button>
+          <button className="bg-blue-500 text-white border px-2 py-2 mx-2 my-2 hover:bg-blue-800 ">
+            Learn more
+          </button>
+        </div>
+      </div>
       ),
       filterKey: "buyingIntent",
     },
@@ -430,12 +601,15 @@ function PeopleSearch() {
   const toggleFilterVisibility = () => {
     setFilterVisible(!filterVisible); // Toggle visibility state
   };
+  
+  const { isCollapsed } = useSidebarCollapseContext();
+  
 
   return (
     <>
       <div className=" bg-gray-100 flex">
         {filterVisible && (
-          <div className="w-1/4 bg-white shadow-md p-4 mx-4 my-6 rounded overflow-y-auto max-h-screen">
+          <div className={`w-1/4 bg-white shadow-md p-4  ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}mx-4 my-6 rounded overflow-y-auto max-h-screen`}>
             <div className="flex  mb-4">
               <button
                 className="px-4 py-2 text-gray-600 rounded-md font-semibold hover:bg-blue-200"
@@ -461,7 +635,7 @@ function PeopleSearch() {
               </span>
               <input
                 type="text"
-                className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -478,18 +652,18 @@ function PeopleSearch() {
                 <Disclosure key={index}>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex justify-between w-full py-2 px-4 text-sm font-medium text-left text-blue-900 rounded-lg hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                      <Disclosure.Button className="flex justify-between w-full py-2 px-4 text-sm font-medium text-left text-gray-700 rounded-lg hover:bg-blue-200  focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                         <div className="flex items-center">
                           {section.icon}
                           <span>{section.title}</span>
                         </div>
                         {open ? (
-                          <ChevronUpIcon className="w-5 h-5 text-blue-500" />
+                          <ChevronUpIcon className="w-5 h-5 text-black" />
                         ) : (
-                          <ChevronDownIcon className="w-5 h-5 text-blue-500" />
+                          <ChevronDownIcon className="w-5 h-5 text-black" />
                         )}
                       </Disclosure.Button>
-                      <Disclosure.Panel className="px-4 pt-2 pb-4 text-sm text-gray-500">
+                      <Disclosure.Panel className="px-4 pt-2 pb-4 text-sm text-gray-700">
                         <div className="max-h-24 overflow-y-auto">
                           {section.content}
                         </div>
@@ -556,7 +730,7 @@ function PeopleSearch() {
                   >
                     {filterVisible ? (
                       <>
-                        <MdFilterListOff className="inline-block mr-2" />
+                        <CiSliderVertical className="inline-block mr-2" />
                         Hide Filters
                       </>
                     ) : (
@@ -588,18 +762,18 @@ function PeopleSearch() {
                   </button>
                 </div>
               </div>
-              <div className="flex items-center ml-auto space-x-2">
+              <div className="flex items-center ml-auto space-x-2 px-2">
                 {/* Icons can be replaced with actual SVGs or icon components */}
-                <span className="mx-2 px-2 text-gray-700 hover:text-gray-900 cursor-pointer">
-                  🔗
+                <span className="mx-2 px-2 text-gray-500 hover:text-gray-900 cursor-pointer">
+                  <IoBagHandle />
                 </span>{" "}
                 |
-                <span className="mx:2  px-2 text:gray:700 hover:text:gray:900 cursor:pointer rounded-full bg-blue:500 text:white p:2">
-                  👤
+                <span className="mx:2  px-2 text:gray:500 hover:text:gray:900 cursor:pointer rounded-full bg-blue:500 text:white p:2">
+                  <IoPersonAddOutline />
                 </span>{" "}
                 |
-                <span className="mx-2 px-2 text-gray-700 hover:text-gray-900 cursor-pointer">
-                  🔔
+                <span className="mx-2 px-2 text-gray-500 hover:text-gray-900 cursor-pointer">
+                  <MdRemoveRedEye />
                 </span>
               </div>
             </div>

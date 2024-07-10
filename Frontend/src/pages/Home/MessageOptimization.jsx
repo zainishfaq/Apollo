@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useSidebarCollapseContext } from "../../Context/SidebarCollapseContext";
 
 function MessageOptimization() {
+  const { isCollapsed } = useSidebarCollapseContext();
   return (
-   <>
-    <div className=" bg-white px-3" style={{ width: "75rem" }}>
+    <>
+    <div className= {` -mt-1 bg-white px-3 ${isCollapsed ? "-ml-44" : "ml-4"} ${isCollapsed ? "mr-2" : "mr-5"}`}  >
         <div
           className="flex items-center justify-center  border border-dashed bg-white border-gray-300 rounded-md"
           style={{ height: "40rem" }}
@@ -19,8 +21,8 @@ function MessageOptimization() {
           </div>
         </div>
       </div>
-   </>
-  )
+    </>
+  );
 }
 
-export default MessageOptimization
+export default MessageOptimization;

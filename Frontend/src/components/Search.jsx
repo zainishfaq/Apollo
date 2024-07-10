@@ -1,6 +1,10 @@
 import React from "react";
 import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import {  FaBuilding } from "react-icons/fa"; // Importing icons
+import { GoPeople } from "react-icons/go";
+import { IoIosList } from "react-icons/io";
+import { useSidebarCollapseContext } from "../Context/SidebarCollapseContext";
 
 function Search() {
   const location = useLocation();
@@ -9,26 +13,18 @@ function Search() {
   const isActiveNavLink = (path) => {
     return location.pathname.startsWith(path);
   };
+
+  const { isCollapsed } = useSidebarCollapseContext(); 
+
   return (
     <>
-      {" "}
-      <div className="fixed top-16 left-64 right-0 bg-white z-40">
-        {" "}
+      
+      <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}>
+      
         {/* Position fixed for the navigation bar */}
-        <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
-          <div className="flex items-center justify-between mb-4">
+        <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-6">
+          <div className="flex items-center justify-between mb-7">
             <h2 className="text-xl font-medium text-black mt-4">Search</h2>
-            <div className="flex gap-4 mt-6 mr-3">
-              <button
-                className="flex items-center bg-gray-200 text-sm 
-                            text-gray-600 px-3 py-2 rounded-lg hover:bg-blue-300"
-              >
-                <span className="mr-1 text-gray-600 px-2 rounded-md">
-                  <CiLock />
-                </span>
-                Create Dashboard
-              </button>
-            </div>
           </div>
         </div>
         <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b p-3 border-gray-200 px-4">
@@ -36,31 +32,35 @@ function Search() {
             <li>
               <NavLink
                 to="/Search/PeopleSearch"
-                className={`text-black-600 ${
-                  isActiveNavLink("/Analytics/Dashboard") ? "bg-blue-100" : ""
+                className={`flex items-center text-black-600 ${
+                  isActiveNavLink("/Search/PeopleSearch") ? "bg-blue-100" : ""
                 } hover:bg-blue-200 rounded-md p-1`}
               >
-                People
+                <GoPeople className="mr-2" /> People
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/Search/CompaniesSearch"
-                className={`text-black-600 ${
-                  isActiveNavLink("/Analytics/Reports") ? "bg-blue-100" : ""
+                className={`flex items-center text-black-600 ${
+                  isActiveNavLink("/Search/CompaniesSearch")
+                    ? "bg-blue-100"
+                    : ""
                 } hover:bg-blue-200 rounded-md p-1`}
               >
-                Companies
+                <FaBuilding className="mr-2" /> Companies
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/Search/SavedListSearch"
-                className={`text-black-600 ${
-                  isActiveNavLink("/Analytics/Reports") ? "bg-blue-100" : ""
+                className={`flex items-center text-black-600 ${
+                  isActiveNavLink("/Search/SavedListSearch")
+                    ? "bg-blue-100"
+                    : ""
                 } hover:bg-blue-200 rounded-md p-1`}
               >
-                Save List
+                <IoIosList className="mr-2" /> Save List
               </NavLink>
             </li>
           </ul>

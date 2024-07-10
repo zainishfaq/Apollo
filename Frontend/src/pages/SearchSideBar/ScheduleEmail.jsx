@@ -14,7 +14,7 @@ function ScheduleSearchEmail() {
         </div> */}
         <div
           className="flex items-center justify-center h-64 border border-dashed bg-white border-gray-300 rounded-md"
-          style={{ height: "28rem" }}
+          style={{ height: "40rem" }}
         >
           <div className="text-center">
             <div className="text-2xl text-gray-500">No emails here!</div>

@@ -4,10 +4,13 @@ import { RiPuzzleLine } from "react-icons/ri";
 import { FiPhoneCall } from "react-icons/fi";
 import { GrNotification } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext'; // assuming you have a context to provide the collapsed state
 
 const Header = () => {
+    const { isCollapsed } = useSidebarCollapseContext(); // use the context to get the collapsed state
+
     return (
-        <div className="fixed top-0 left-60 right-0 flex items-center justify-end bg-white py-2 border-b border-gray-200 z-50">
+        <div className={`fixed top-0 ${isCollapsed ? 'left-14' : 'left-60'} right-0 flex items-center justify-end bg-white py-2 border-b border-gray-200 z-50`}>
             <div className="flex items-center text-md">
                 <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">

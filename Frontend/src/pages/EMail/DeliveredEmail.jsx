@@ -31,7 +31,7 @@ function DeliveredEmail() {
             </div>
             <div className="flex-1 flex justify-end items-center space-x-2">
               <select className="p-1 border border-gray-300 rounded-md">
-                <option>im.uxama85@gmail.com</option>
+                <option>im.uxama@gmail.com</option>
               </select>
               <div className="text-sm">
                 <div>0 / 50 Daily emails sent</div>

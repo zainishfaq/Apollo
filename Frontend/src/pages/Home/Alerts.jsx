@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react'
+import { useSidebarCollapseContext } from "../../Context/SidebarCollapseContext";
 
-function Task() {
+function Alerts() {
+  const { isCollapsed } = useSidebarCollapseContext();
   return (
     <>
-      <div className=" bg-white px-3" style={{ width: "75rem" }}>
+    <div className= {` -mt-1 bg-white px-3 ${isCollapsed ? "-ml-44" : "ml-4"} ${isCollapsed ? "mr-2" : "mr-5"}`}  >
         <div
           className="flex items-center justify-center  border border-dashed bg-white border-gray-300 rounded-md"
           style={{ height: "40rem" }}
@@ -11,7 +13,7 @@ function Task() {
           <div className="text-center">
             <div className="text-2xl text-gray-500">No emails here!</div>
             <div className="text-gray-400">
-              Check again later or clear any applied for Task filters.
+              Check again later or clear any applied filters for alerts.
             </div>
             <button className="mt-4 px-4 py-2 text-white bg-blue-600 rounded-md">
               Clear filters
@@ -20,7 +22,7 @@ function Task() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Task;
+export default Alerts

@@ -1,4 +1,3 @@
-import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import Select from "react-select";
@@ -7,8 +6,6 @@ import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaArrowDown } from "react-icons/fa6";
-import { SearchIcon } from "@heroicons/react/solid"; // Make sure to import the icon
-
 import {
   AiOutlineUser,
   AiOutlineCalendar,
@@ -16,10 +13,11 @@ import {
   AiOutlineFile,
   AiOutlineSearch,
 } from "react-icons/ai";
-import { FiSettings } from "react-icons/fi"; // Import the settings icon
-import CreateSequence from "./Sequence/SequencePopup";
+import { FiSettings } from "react-icons/fi";
+import { useSidebarCollapseContext } from "../../Context/SidebarCollapseContext";
 
-function Sequences() {
+
+function Task() {
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [showCreateSequence, setShowCreateSequence] = useState(false);
   const [openSectionIndex, setOpenSectionIndex] = useState(null);
@@ -33,8 +31,8 @@ function Sequences() {
 
   const sections = [
     {
-      title: "Starred",
-      icon: <MdOutlineEmail className="w-5 h-5 text-gray-700" />,
+      title: "Task due date ",
+      icon: <MdOutlineEmail className="w-5 h-5 text-blue-500" />,
       content: (
         <Select
           options={emailOptions}
@@ -45,28 +43,38 @@ function Sequences() {
       ),
     },
     {
-      title: "Own By",
-      icon: <AiOutlineFile className="w-5 h-5 text-gray-700" />,
+      title: "Sequences",
+      icon: <AiOutlineFile className="w-5 h-5 text-blue-500" />,
       content: <p>Sequence content here...</p>,
     },
     {
-      title: "Tags",
-      icon: <AiOutlineTeam className="w-5 h-5 text-gray-700" />,
+      title: "Task Priority",
+      icon: <AiOutlineTeam className="w-5 h-5 text-blue-500" />,
       content: <p>Contact list content here...</p>,
     },
     {
-      title: "Status",
-      icon: <AiOutlineCalendar className="w-5 h-5 text-gray-700" />,
+      title: "Email Opened",
+      icon: <AiOutlineCalendar className="w-5 h-5 text-blue-500" />,
       content: <p>Date range content here...</p>,
     },
     {
-      title: "Performance",
-      icon: <AiOutlineUser className="w-5 h-5 text-gray-700" />,
+      title: "Phone/Confidence",
+      icon: <AiOutlineUser className="w-5 h-5 text-blue-500" />,
       content: <p>Not sent reason content here...</p>,
     },
     {
-      title: "Folders",
-      icon: <AiOutlineSearch className="w-5 h-5 text-gray-700" />,
+      title: "Company",
+      icon: <AiOutlineSearch className="w-5 h-5 text-blue-500" />,
+      content: <p>Email opened content here...</p>,
+    },
+    {
+      title: "Persona",
+      icon: <AiOutlineSearch className="w-5 h-5 text-blue-500" />,
+      content: <p>Email opened content here...</p>,
+    },
+    {
+      title: "Time zone",
+      icon: <AiOutlineSearch className="w-5 h-5 text-blue-500" />,
       content: <p>Email opened content here...</p>,
     },
   ];
@@ -87,21 +95,11 @@ function Sequences() {
     return location.pathname.startsWith(path);
   };
 
+  const { isCollapsed } = useSidebarCollapseContext(); 
+
   return (
     <>
-      <div className="fixed top-16 left-64 right-0 bg-white z-40">
-        <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-medium text-black mt-4">Sequence</h2>
-            <div className="flex gap-4 mt-6 mr-3">
-              <button className="flex items-center  text-sm text-gray-600 px-3 py-2 rounded-lg hover:bg-blue-300">
-                <span className="text-gray-600 px-2 rounded-md">
-                  <FiSettings className="w-5 h-5" />
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className={`top-30 ${isCollapsed ? "-ml-44" : "ml-4"} ${isCollapsed ? "mr-2" : "mr-5"} right-0 bg-white z-40`}>
         <div>
           <div className="min-h-screen" style={{ backgroundColor: "#F3F4F6" }}>
             <div className="flex">
@@ -115,29 +113,23 @@ function Sequences() {
                     <hr />
                     <div className="text-gray-500">
                       <div className="w-64 p-4 border-r border-gray-200">
-                        <div className="mb-4 relative">
-                          <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <SearchIcon
-                              className="h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                          </span>
+                        <div className="mb-4 border border-gray-300 rounded-md">
                           <input
                             type="text"
-                            className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Search..."
-        
+                            placeholder="Search Emails..."
+                            className="w-full px-3 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                           />
                         </div>
-                        <hr />
-
                         {sections.map((section, index) => (
-                          <div key={index} className="mb-4 border-gray-400 ">
+                          <div
+                            key={index}
+                            className="mb-4 border border-gray-300 rounded-md"
+                          >
                             <Disclosure as="div">
                               {({ open }) => (
                                 <>
                                   <Disclosure.Button
-                                    className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-gray-700 rounded-t-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                                    className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-blue-900 rounded-t-lg hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
                                     onClick={() => toggleSection(index)}
                                   >
                                     <div className="flex items-center space-x-2">
@@ -155,7 +147,6 @@ function Sequences() {
                                       {section.content}
                                     </Disclosure.Panel>
                                   )}
-                                  <hr className="my-2 " />
                                 </>
                               )}
                             </Disclosure>
@@ -171,7 +162,7 @@ function Sequences() {
                 <div className="bg-white">
                   <div className="flex items-center px-2 py-3">
                     <button
-                      className="px-4 py-2 text-gray-400 border hover:text-gray-700 rounded-md"
+                      className="px-4 py-2 text-black bg-gray-200 rounded-md"
                       onClick={toggleFiltersVisibility}
                     >
                       {showFilters ? "Hide Filters" : "Show Filters"}
@@ -180,36 +171,43 @@ function Sequences() {
                   <hr />
                   {/* + New Sequence Button */}
                   <div className="flex flex-row w-full rounded-lg bg-gray-100 shadow-md justify-between">
-                    <div className="flex flex-row items-center px-4 py-2">
-                      <input
-                        type="checkbox"
-                        className="form-checkbox h-5 w-5 text-indigo-600"
-                      />
-                      <div className="border border-gray-300 rounded-md p-2 ml-4">
-                        <label className="inline-flex items-center ml-2">
-                          <span className="text-gray-700 px-2">
-                            <FaArrowDown className="h-5 w-5 text-gray-700 cursor-pointer" />
-                          </span>
-                        </label>
-                        <label className="inline-flex items-center px-3">
-                          <span className="text-gray-700">
-                            <MdDelete className="h-5 w-5 text-gray-700 cursor-pointer" />
-                          </span>
-                        </label>
+                    <div className="flex items-center space-x-4 p-2 border border-gray-300 rounded-md">
+                      <div className="flex items-center space-x-2">
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-square text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-clock text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-envelope text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-trash text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-play text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-redo text-gray-400"></i>
+                        </button>
+                        <button className="p-1 hover:bg-gray-500 rounded">
+                          <i className="fas fa-ellipsis-h text-gray-400"></i>
+                        </button>
                       </div>
+                      
                     </div>
+
                     <div className="flex flex-row items-center px-4 py-2 space-x-2">
                       <button className="border border-gray-300 rounded-md px-3 py-1 text-gray-500 hover:text-indigo-500 hover:border-indigo-500">
-                        Recently Used
+                        Task Status
                       </button>
-                      <button className="border border-gray-300 rounded-md px-3 py-1 ml-2 text-gray-500 hover:text-indigo-500 hover:border-indigo-500">
-                        Run diagnostics
-                      </button>
+                      
                       <button
-                        className="text-indigo-500 px-3 py-2 rounded-full bg-indigo-200 hover:bg-indigo-400"
+                        className="text-indigo-500 px-3 py-2  text-white bg-indigo-300 hover:bg-indigo-500"
                         onClick={toggleCreateSequencePopup}
                       >
-                        + New Sequence
+                        New Task
                       </button>
                     </div>
                   </div>
@@ -238,7 +236,7 @@ function Sequences() {
               <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
                 <CreateSequence />
                 <button
-                  className="absolute top-4 right-4 text-gray-900 hover:text-white"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white"
                   onClick={toggleCreateSequencePopup}
                 >
                   Close
@@ -248,13 +246,8 @@ function Sequences() {
           </div>
         </div>
       </div>
-      <div className="mt-36 ml-60">
-        {" "}
-        {/* Margin-top to ensure content doesn't overlap with fixed header and navbar */}
-        <Outlet />
-      </div>
     </>
   );
 }
 
-export default Sequences;
+export default Task;

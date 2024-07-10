@@ -192,19 +192,44 @@ const EmailTemplate = () => {
                   ></textarea>
                 </div>
 
-                <div className="flex justify-end mt-6 space-x-4">
-                  <button
-                    type="button"
-                    className="px-6 py-2 bg-gray-200 rounded-md"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md"
-                  >
-                    Save
-                  </button>
+                <div className="flex justify-between mt-6 space-x-4">
+                  <div className="flex items-center space-x-2">
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-square text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-clock text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-envelope text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-trash text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-play text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-redo text-gray-500"></i>
+                    </button>
+                    <button className="p-1 hover:bg-gray-200 rounded">
+                      <i className="fas fa-ellipsis-h text-gray-500"></i>
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      className="px-6 mx-2 py-2 bg-gray-200 rounded-md"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-6 py-2 mx-2 bg-blue-500 text-white rounded-md"
+                    >
+                      Save
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

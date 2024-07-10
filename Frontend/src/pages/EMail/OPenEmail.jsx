@@ -7,7 +7,7 @@ function OpenEmail() {
         <div className="flex">
           <div className=" ml-auto items-center    space-x-4">
             <select className="border border-gray-300 rounded-md">
-              <option>im.uxama85@gmail.com</option>
+              <option>im.uxama@gmail.com</option>
             </select>
           </div>
           <div>0 / 50 Daily emails sent</div>
