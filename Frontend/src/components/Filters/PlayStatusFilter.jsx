@@ -2,11 +2,27 @@ import React, { useState } from "react";
 import { IoCaretDown } from "react-icons/io5";
 import { GoChevronUp } from "react-icons/go";
 
-const PlayStatusFilter = ({ selectedStatus, handleStatusChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const PlayStatusFilter = ({ selectedStatus, handleStatusChange, isOpen, toggleDropdown }) => {
+  const [isCheckedActive, setIsCheckedActive] = useState(selectedStatus.includes("Active"));
+  const [isCheckedInactive, setIsCheckedInactive] = useState(selectedStatus.includes("Inactive"));
+  const [isCheckedArchived, setIsCheckedArchived] = useState(selectedStatus.includes("Archived"));
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const handleActiveChange = () => {
+    const newActiveStatus = !isCheckedActive;
+    setIsCheckedActive(newActiveStatus);
+    handleStatusChange("Active", newActiveStatus);
+  };
+
+  const handleInactiveChange = () => {
+    const newInactiveStatus = !isCheckedInactive;
+    setIsCheckedInactive(newInactiveStatus);
+    handleStatusChange("Inactive", newInactiveStatus);
+  };
+
+  const handleArchivedChange = () => {
+    const newArchivedStatus = !isCheckedArchived;
+    setIsCheckedArchived(newArchivedStatus);
+    handleStatusChange("Archived", newArchivedStatus);
   };
 
   return (
@@ -24,8 +40,8 @@ const PlayStatusFilter = ({ selectedStatus, handleStatusChange }) => {
             <input
               type="checkbox"
               value="Active"
-              checked={selectedStatus.includes("Active")}
-              onChange={handleStatusChange}
+              checked={isCheckedActive}
+              onChange={handleActiveChange}
               className="mr-2"
             />
             Active
@@ -34,8 +50,8 @@ const PlayStatusFilter = ({ selectedStatus, handleStatusChange }) => {
             <input
               type="checkbox"
               value="Inactive"
-              checked={selectedStatus.includes("Inactive")}
-              onChange={handleStatusChange}
+              checked={isCheckedInactive}
+              onChange={handleInactiveChange}
               className="mr-2"
             />
             Inactive
@@ -44,8 +60,8 @@ const PlayStatusFilter = ({ selectedStatus, handleStatusChange }) => {
             <input
               type="checkbox"
               value="Archived"
-              checked={selectedStatus.includes("Archived")}
-              onChange={handleStatusChange}
+              checked={isCheckedArchived}
+              onChange={handleArchivedChange}
               className="mr-2"
             />
             Archived

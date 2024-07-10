@@ -3,7 +3,15 @@ import { IoCaretDown } from "react-icons/io5";
 import { GoChevronUp } from "react-icons/go";
 import { FaRegFolderOpen } from "react-icons/fa";
 
-const FolderFilter = ({ folders, selectedStatus, handleFolderChange, handleCreateFolder, handleNewFolderNameChange, showCreateFolderPopup, toggleCreateFolderPopup }) => {
+const FolderFilter = ({
+  folders,
+  selectedStatus,
+  handleFolderChange,
+  handleCreateFolder,
+  handleNewFolderNameChange,
+  showCreateFolderPopup,
+  toggleCreateFolderPopup,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -33,8 +41,11 @@ const FolderFilter = ({ folders, selectedStatus, handleFolderChange, handleCreat
               {folder}
             </div>
           ))}
-          <div className="flex items-center p-2 cursor-pointer text-blue-500 hover:bg-gray-300 " onClick={toggleCreateFolderPopup}>
-          <FaRegFolderOpen className="mr-3"/> Add Folder
+          <div
+            className="flex items-center p-2 cursor-pointer text-blue-500 hover:bg-gray-300"
+            onClick={toggleCreateFolderPopup}
+          >
+            <FaRegFolderOpen className="mr-3" /> Add Folder
           </div>
         </div>
       )}
