@@ -16,6 +16,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import SpillWord from "../assets/spillword icons.png";
 import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
 
+
 const Sidebar = () => {
     const { isCollapsed, toggleSidebar } = useSidebarCollapseContext();
     const ICON_SIZE = "1.25rem";

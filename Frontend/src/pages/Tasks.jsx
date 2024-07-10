@@ -12,6 +12,8 @@ import TaskCreatedFrom from '../components/Filters/TaskCreatedFrom';
 import TaskStarred from '../components/Filters/TaskStarred';
 
 function Tasks() {
+ 
+
   return (
     <>
     <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
@@ -149,4 +151,4 @@ function Tasks() {
   )
 }
 
-export default Tasks
+export default Tasks;

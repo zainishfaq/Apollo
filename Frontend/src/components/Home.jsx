@@ -10,8 +10,7 @@ function Home() {
   // Function to determine if NavLink should have active styles
   const isActiveNavLink = (path) => {
     return location.pathname.startsWith(path);
-
-};
+  };
 
   return (
     <>
@@ -143,7 +142,9 @@ function Home() {
           <li>
             <NavLink
               to="/Home/RecentReplies"
-              className={`text-black-600 ${isActiveNavLink('/Home/RecentReplies') ? 'bg-blue-100' : ''} hover:bg-gray-300 rounded-md p-1`}
+              className={`text-black-600 ${
+                isActiveNavLink("/Home/RecentReplies") ? "bg-blue-100" : ""
+              } hover:bg-gray-300 rounded-md p-1`}
             >
               Recent Replies
             </NavLink>
@@ -151,7 +152,11 @@ function Home() {
           <li>
             <NavLink
               to="/Home/RecommendedProspects"
-              className={`text-black-600 ${isActiveNavLink('/Home/RecommendedProspects') ? 'bg-blue-100' : ''} hover:bg-gray-300 rounded-md p-1`}
+              className={`text-black-600 ${
+                isActiveNavLink("/Home/RecommendedProspects")
+                  ? "bg-blue-100"
+                  : ""
+              } hover:bg-gray-300 rounded-md p-1`}
             >
               Recommended Prospects
             </NavLink>
@@ -159,7 +164,11 @@ function Home() {
           <li>
             <NavLink
               to="/Home/MessageOptimization"
-              className={`text-black-600 ${isActiveNavLink('/Home/MessageOptimization') ? 'bg-blue-100' : ''} hover:bg-gray-300 rounded-md p-1`}
+              className={`text-black-600 ${
+                isActiveNavLink("/Home/MessageOptimization")
+                  ? "bg-blue-100"
+                  : ""
+              } hover:bg-gray-300 rounded-md p-1`}
             >
               Message Optimization
             </NavLink>
@@ -167,7 +176,9 @@ function Home() {
           <li>
             <NavLink
               to="/Home/Task"
-              className={`text-black-600 ${isActiveNavLink('/Home/Task') ? 'bg-blue-100' : ''} hover:bg-gray-300 rounded-md p-1`}
+              className={`text-black-600 ${
+                isActiveNavLink("/Home/Task") ? "bg-blue-100" : ""
+              } hover:bg-gray-300 rounded-md p-1`}
             >
               Tasks
             </NavLink>
@@ -175,7 +186,9 @@ function Home() {
           <li>
             <NavLink
               to="/Home/Alerts"
-              className={`text-black-600 ${isActiveNavLink('/Home/Alerts') ? 'bg-blue-100' : ''} hover:bg-gray-300 rounded-md p-1`}
+              className={`text-black-600 ${
+                isActiveNavLink("/Home/Alerts") ? "bg-blue-100" : ""
+              } hover:bg-gray-300 rounded-md p-1`}
             >
               Alerts
             </NavLink>
@@ -185,7 +198,7 @@ function Home() {
 
       <div className="mt-0 ml-60">
         <Outlet />
-     </div>
+      </div>
     </>
   );
 }
