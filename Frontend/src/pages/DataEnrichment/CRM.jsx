@@ -17,7 +17,7 @@ function CRM() {
 
       <div className={`flex justify-center items-center gap-5  ${isCollapsed ? "-ml-36" : "ml-5"} ${isCollapsed ? "mr-7" : "mr-5"} mt-10 rounded-lg shadow-lg`}>
         <div className='w-1/2 bg-white p-6 rounded-lg shadow-md flex flex-col items-center'>
-          <img src={Sale} alt="Salesforce" className='w-18 h-16 mb-4 rounded-lg'/>
+          <img src={Sale} alt="Salesforce" className='w-20 h-16 mb-4 rounded-lg'/>
           <div className='font-semibold text-xl mt-5 mb-2'>Connect Salesforce</div>
           <p className='text-center text-gray-500 mb-4'>
             Connect SpillWord to a Salesforce admin and begin enriching your records.
@@ -28,7 +28,7 @@ function CRM() {
         </div>
 
         <div className='w-1/2 bg-white p-6 rounded-lg shadow-md flex flex-col items-center'>
-          <img src={HubSpot} alt="Hubspot" className='w-18 h-16 mb-4 rounded-lg'/>
+          <img src={HubSpot} alt="Hubspot" className='w-20 h-16 mb-4 rounded-lg'/>
           <div className='font-semibold text-xl mt-5 mb-2'>Connect Hubspot</div>
           <p className='text-center text-gray-500 mb-4'>
             Connect SpillWord to a Hubspot admin and begin enriching your records.
