@@ -3,12 +3,15 @@ import { WiStars } from "react-icons/wi";
 import { RiMailStarLine } from "react-icons/ri";
 import { LiaCloudsmith } from "react-icons/lia";
 import zoom from "../assets/zoom.svg"
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
+
 
 
 function Conversations() {
+  const { isCollapsed } = useSidebarCollapseContext();
   return (
     <>
-    <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+    <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}> {/* Position fixed for the navigation bar */}
     <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
         <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-black mt-4">Conversations</h2>
@@ -17,7 +20,7 @@ function Conversations() {
     </div>
    
 
-    <div className="mt-24 ml-56 w-auto bg-white">
+    <div className={`mt-20 ${isCollapsed ? "ml-10" : "ml-56"} w-auto -mb-10 bg-white -mr-6`}>
     <div className="flex flex-1 h-screen">
   {/* Left half */}
   <div className="w-1/2 bg-white h-full">
@@ -28,7 +31,7 @@ function Conversations() {
   </div>
 
   {/* Right half */}
-  <div className="w-1/2 bg-white p-8 mt-12">
+  <div className="w-1/2 bg-white p-8 mt-18">
     <h1 className='font-semibold text-3xl p-4'> Convert your conversations into winning strategies</h1>
     <h2 className='font-semibold text-2xl p-4'>Automatically record, transcribe, and analyze video call meetings powered by Apollo AI.</h2>
     <ul className='font-semibold text-lg pl-2'>

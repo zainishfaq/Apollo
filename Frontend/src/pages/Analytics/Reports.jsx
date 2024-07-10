@@ -1,8 +1,10 @@
 import React from 'react'
+import { useSidebarCollapseContext } from '../../Context/SidebarCollapseContext';
 
 function Reports() {
+    const { isCollapsed } = useSidebarCollapseContext();
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className={`flex items-center ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"} justify-center min-h-screen`}>
             <div className="text-center">
                 <video width="600" controls className="mx-auto">
                     <source src='' type="video" />  {/* add a source of video accordingly */}

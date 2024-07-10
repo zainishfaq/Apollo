@@ -5,11 +5,14 @@ import { LiaCloudsmith } from "react-icons/lia";
 import connet from "../assets/connet.svg"
 import salesforce from "../assets/salesforce.svg"
 import Deal from "../assets/Deal.jpeg"
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
+
 
 function Deals() {
+  const { isCollapsed } = useSidebarCollapseContext();
   return (
     <>
-    <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+    <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}> {/* Position fixed for the navigation bar */}
     <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
         <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-black mt-4">Deals</h2>
@@ -18,15 +21,15 @@ function Deals() {
     </div>
    
 
-    <div className="mt-24 ml-56 w-auto bg-white">
+    <div className={`mt-20 ${isCollapsed ? "ml-8" : "ml-52"} w-auto -mb-10 bg-white -mr-6`}>
     <div className="flex flex-1 h-screen">
   {/* Left half */}
   <div className="w-1/2 bg-white h-full">
-  <img src={Deal} alt="Deal Image" style={{ width: '98%', height: '100%' }} className=" rounded-lg shadow-lg mb-1 ml-2 mt-0" /> 
+  <img src={Deal} alt="Deal Image" style={{ width: '98%', height: '100%' }} className=" rounded-sm shadow-lg mb-1 ml-2 mt-0" /> 
   </div>
 
   {/* Right half */}
-  <div className="w-1/2 bg-white p-8 mt-12">
+  <div className="w-1/2 bg-white p-8 mt-18 ">
     <h1 className='font-semibold text-3xl p-4'> Bring more deals across the finish line</h1>
     <h2 className='font-semibold text-2xl p-4'>Accelerate your deal velocity with streamlined deal management in Apollo.</h2>
     <ul className='font-semibold text-lg pl-2'>

@@ -37,7 +37,7 @@ const Sidebar = () => {
             <Divider />
             <ul className={`flex flex-col mt-3 gap-y-1 flex-grow overflow-y-auto ${isCollapsed ? 'h-full' : 'scrollbar'}`}>
                 <NavLink to='/Home/RecentReplies' className="flex items-center">
-                    <li className={`px-${isCollapsed ? '4' : '6'} py-2 px-2 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer w-full ${location.pathname === '/' ? 'bg-blue-100' : ''}`}>
+                    <li className={`px-${isCollapsed ? '4' : '6'} py-2 px-2 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer w-full ${location.pathname === '/Home/RecentReplies' ? 'bg-blue-100' : ''}`}>
                         <LuHome className="text-gray-600 mr-3" style={{ width: ICON_SIZE, height: ICON_SIZE, minWidth: ICON_SIZE }} />
                         <span className={`transition-all duration-300 text-sm font-semibold ${isCollapsed ? 'hidden' : ''}`}>Home</span>
                     </li>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "../components/Home";
 import Data_Enrichment from "../components/DataEnrichment";
@@ -78,6 +78,7 @@ const AppRoute = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Navigate to="Home/RecentReplies" />} />
         <Route path="Home" element={<Home />}>
           <Route index element={<RecentReplies />} />
           <Route path="RecentReplies" element={<RecentReplies />} />

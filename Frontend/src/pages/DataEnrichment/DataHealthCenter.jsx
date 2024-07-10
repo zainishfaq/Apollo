@@ -46,7 +46,7 @@ function DataHealthCenter() {
       <div className={`mt-5 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
         <h1 className="text-xl font-semibold">Contacts Data Health</h1>
 
-        <div className="flex flex-row gap-3 mt-5">
+        <div className="flex flex-row gap-2 mt-5">
           <div className="w-1/2 bg-white rounded-t-md rounded-r-md rounded-l-md shadow-lg p-5 flex">
             <div
               className="relative flex items-center justify-center"
@@ -89,7 +89,7 @@ function DataHealthCenter() {
         </div>
       </div>
 
-      <div className={`flex gap-10 -mt-2 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
+      <div className={`flex gap-8 -mt-2 ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}`}>
         <div className="w-1/2 bg-white rounded-b-md shadow-lg flex justify-between border-t-2 border-gray-200">
           <button className="flex items-center m-5 text-blue-600 font-semibold text-sm">
             <IoEyeOutline className="mr-2" />
