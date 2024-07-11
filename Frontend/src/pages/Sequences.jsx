@@ -47,27 +47,47 @@ function Sequences() {
     {
       title: "Own By",
       icon: <AiOutlineFile className="w-5 h-5 text-gray-700" />,
-      content: <p>Sequence content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Tags",
       icon: <AiOutlineTeam className="w-5 h-5 text-gray-700" />,
-      content: <p>Contact list content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Status",
       icon: <AiOutlineCalendar className="w-5 h-5 text-gray-700" />,
-      content: <p>Date range content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Performance",
       icon: <AiOutlineUser className="w-5 h-5 text-gray-700" />,
-      content: <p>Not sent reason content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Folders",
       icon: <AiOutlineSearch className="w-5 h-5 text-gray-700" />,
-      content: <p>Email opened content here...</p>,
+      content: <input 
+      type="file" 
+      // placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
   ];
 
@@ -217,7 +237,7 @@ function Sequences() {
                   <div
                     className="flex items-center justify-center h-64 border border-dashed bg-white border-gray-300 rounded-md"
                     style={{ height: "35rem" }}
-                  >
+                   >
                     <div className="text-center">
                       <div className="text-2xl text-gray-500">
                         No emails here!
@@ -234,7 +254,7 @@ function Sequences() {
               </div>
             </div>
             {/* Show Create Sequence Popup */}
-            {showCreateSequence && (
+            {/* {showCreateSequence && (
               <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
                 <CreateSequence />
                 <button
@@ -244,7 +264,7 @@ function Sequences() {
                   Close
                 </button>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

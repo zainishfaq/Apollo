@@ -153,7 +153,7 @@ function RecentReplies() {
             <div
               className="flex items-center justify-center  border border-dashed bg-white border-gray-300 rounded-md"
               style={{ height: "40rem" }}
-            >
+             >
               <div className="text-center">
                 <div className="text-2xl text-gray-500">No emails here!</div>
                 <div className="text-gray-400">
