@@ -1,10 +1,13 @@
 import React from "react";
 import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { FiSettings } from "react-icons/fi"; // Import the settings icon
+import { FiSettings } from "react-icons/fi";
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext'; // Import the settings icon
 
 function Email() {
   const location = useLocation();
+  const { isCollapsed } = useSidebarCollapseContext();
+
 
   // Function to determine if a NavLink should be active
   const isActiveNavLink = (path) => {
@@ -13,7 +16,7 @@ function Email() {
   return (
     <>
       {" "}
-      <div className="fixed top-16 left-64 right-0 bg-white z-40">
+      <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}>
         {" "}
         {/* Position fixed for the navigation bar */}
         <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">

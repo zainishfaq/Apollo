@@ -3,6 +3,7 @@ import Select from "react-select";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiSliderVertical } from "react-icons/ci";
+import { useSidebarCollapseContext } from '../../Context/SidebarCollapseContext';
 
 import {
   AiOutlineUser,
@@ -157,8 +158,10 @@ function FilterTemplate() {
     );
   };
 
+  const { isCollapsed } = useSidebarCollapseContext();
+
   return (
-    <div className="flex py-3 px-3" style={{ height: "42rem" }}>
+    <div className={`flex py-3 px-3 ${isCollapsed ? "-ml-44" : "ml-0"}  `}style={{ height: "36rem" }}>
       {filtersVisible && (
         <div className="bg-white shadow-md rounded p-4">
           <div className="flex justify-between py-1">
@@ -210,7 +213,7 @@ function FilterTemplate() {
         </div>
       )}
 
-      <div className={`mx-auto ${contentWidth}`}>
+      {/* <div className={`mx-auto ${contentWidth}`}> */}
         <div className="flex-1 p-4">
           <div className="bg-white">
             <div className="flex flex-wrap items-center mb-4">
@@ -277,7 +280,7 @@ function FilterTemplate() {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

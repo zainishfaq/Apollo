@@ -25,13 +25,13 @@ function Deals() {
     <div className="flex flex-1 h-screen">
   {/* Left half */}
   <div className="w-1/2 bg-white h-full">
-  <img src={Deal} alt="Deal Image" style={{ width: '98%', height: '100%' }} className=" rounded-sm shadow-lg mb-1 ml-2 mt-0" /> 
+  {/* <img src={Deal} alt="Deal Image" style={{ width: '98%', height: '100%' }} className=" rounded-sm shadow-lg mb-1 ml-2 mt-0" />  */}
   </div>
 
   {/* Right half */}
   <div className="w-1/2 bg-white p-8 mt-18 ">
     <h1 className='font-semibold text-3xl p-4'> Bring more deals across the finish line</h1>
-    <h2 className='font-semibold text-2xl p-4'>Accelerate your deal velocity with streamlined deal management in Apollo.</h2>
+    <h2 className='font-semibold text-2xl p-4'>Accelerate your deal velocity with streamlined deal management in Spillword.</h2>
     <ul className='font-semibold text-lg pl-2'>
       <li className="flex items-center">
         <WiStars className="inline-block w-8 h-8" /> {/* Assuming WiStars renders an SVG icon */}
@@ -40,7 +40,7 @@ function Deals() {
           
       <li className="flex items-center">
         <RiMailStarLine className="inline-block w-6 h-6 mr-2 pt-0" /> {/* Assuming RiMailStarLine renders an SVG icon */}
-        Use with Apollo solutions, like Conversations, for a consolidated deal view
+        Use with Spillword solutions, like Conversations, for a consolidated deal view
       </li>
 
       <li className="flex items-center">
@@ -49,7 +49,7 @@ function Deals() {
       </li>
     </ul>
     <div className="flex justify-between mt-4">
-      <span className='flex'>Use Apollo as your CRM or sync with: <img src={connet} alt="connet Image" style={{ width: '30px', height: '30px' }} className=" rounded-lg  mb-1 ml-2 mt-0" /> <img src={salesforce} alt="salesforce Image" style={{ width: '30px', height: '30px' }} className=" rounded-lg mb-1 ml-2 mt-0" /></span>
+      <span className='flex'>Use Spillword as your CRM or sync with: <img src={connet} alt="connet Image" style={{ width: '30px', height: '30px' }} className=" rounded-lg  mb-1 ml-2 mt-0" /> <img src={salesforce} alt="salesforce Image" style={{ width: '30px', height: '30px' }} className=" rounded-lg mb-1 ml-2 mt-0" /></span>
       
     </div>
     <div className="flex mt-4">
