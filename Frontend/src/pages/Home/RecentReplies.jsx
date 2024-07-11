@@ -151,7 +151,7 @@ function RecentReplies() {
 
           <div className=" bg-white px-3 mb-2" style={{ width: "40rem" }}>
             <div
-              className={`flex items-center justify-center  border border-dashed mt-2 bg-white border-gray-300 rounded-md ${isCollapsed? "w-[1000px]" : "w-[800px]" }`}
+              className={`flex items-center justify-center overflow-x-hidden border border-dashed mt-2 bg-white border-gray-300 rounded-md ${isCollapsed? "w-[1000px]" : "w-[750px]" }`}
               style={{ height: "40rem" }}             >
               <div className="text-center">
                 <div className="text-2xl text-gray-500">No emails here!</div>
