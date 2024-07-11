@@ -33,7 +33,7 @@ function Conversations() {
   {/* Right half */}
   <div className="w-1/2 bg-white p-8 mt-18">
     <h1 className='font-semibold text-3xl p-4'> Convert your conversations into winning strategies</h1>
-    <h2 className='font-semibold text-2xl p-4'>Automatically record, transcribe, and analyze video call meetings powered by Apollo AI.</h2>
+    <h2 className='font-semibold text-2xl p-4'>Automatically record, transcribe, and analyze video call meetings powered by Spillword AI.</h2>
     <ul className='font-semibold text-lg pl-2'>
       <li className="flex items-center">
         <WiStars className="inline-block w-8 h-8" /> {/* Assuming WiStars renders an SVG icon */}
