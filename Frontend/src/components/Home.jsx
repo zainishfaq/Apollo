@@ -15,15 +15,13 @@ function Home() {
   return (
     <>
       <div
-        className={`text-2xl font-medium bg-white text-black mt-8  ${
-          isCollapsed ? "ml-10" : "ml-56"
-        }  -mr-4 py-2 border-b border-gray-200 px-4`}
+        className={`fixed right-0 top-4 ${isCollapsed ? 'left-14' : 'left-60'} text-2xl font-medium bg-white text-black mt-8   -mr-4 py-2 border-b border-gray-200 px-4`}
       >
         Home
       </div>
 
       <div
-        className={`flex flex-row gap-3 mt-5   ${
+        className={`flex flex-row gap-3 mt-24   ${
           isCollapsed ? "ml-16" : "ml-64"
         } ${isCollapsed ? "mr-2" : "mr-5"}`}
       >
