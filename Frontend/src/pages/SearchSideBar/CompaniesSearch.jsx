@@ -402,26 +402,13 @@ function CompaniesSearch() {
       ),
       filterKey: "emailBounced",
     },
-    // {
-    //   title: "Signals",
-    //   icon: <AiOutlineTeam className="mr-2" />,
-    //   content: (
-    //     <input
-    //       type="text"
-    //       className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-    //       placeholder="Enter signals..."
-    //       value={filter.emailStatus}
-    //       onChange={(e) => handleFilterChange("emailStatus", e.target.value)}
-    //     />
-    //   ),
-    //   filterKey: "emailStatus",
-    // },
+   
   ];
 
   return (
     <>
-      <div className="w-screen h-screen bg-gray-100 flex">
-        <div className="w-1/4 bg-white shadow-md p-4 mx-4 my-6 rounded overflow-y-auto max-h-screen">
+      <div className="  flex">
+        <div className="w-1/4 bg-white shadow-md p-4 mx- my-4 rounded overflow-y-auto max-h-screen">
           <div className="flex  mb-4">
             <button
               className="px-4 py-2 text-gray-600 rounded-md font-semibold hover:bg-blue-200"

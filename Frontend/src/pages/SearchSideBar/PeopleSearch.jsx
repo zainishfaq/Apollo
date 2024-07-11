@@ -491,18 +491,29 @@ function PeopleSearch() {
       filterKey: "buyingIntent",
     },
     {
-      title: "Industry & Keywords",
+      title: "Website Visitor",
       icon: <MdOutlineFilterList className="mr-2" />,
       content: (
-        <input
-          type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter industry & keywords..."
-          value={filter.Listname}
-          onChange={(e) => handleFilterChange("Listname", e.target.value)}
-        />
+        // <input
+        //   type="text"
+        //   className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+        //   placeholder="Enter industry & keywords..."
+        //   value={filter.Listname}
+        //   onChange={(e) => handleFilterChange("Listname", e.target.value)}
+        // />
+        <div className="flex flex-col">
+          <h2 className="my-4">
+          Want to turn anonymous website visitors into leads?
+          </h2>
+          <div className="tabs flex flex-col justify-between">
+          <button className="text-blue-800 border px-2 py-2 mx-2  hover:bg-blue-400">
+            Get Started
+          </button>
+          
+        </div>
+        </div>
       ),
-      filterKey: "Listname",
+      filterKey: "Website Visitor",
     },
     {
       title: "Scores",
@@ -565,18 +576,36 @@ function PeopleSearch() {
       filterKey: "emailClicked",
     },
     {
-      title: "Job Postings",
+      title: "Stages",
       icon: <AiOutlineCalendar className="mr-2" />,
       content: (
-        <input
-          type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter job postings..."
-          value={filter.emailBounced}
-          onChange={(e) => handleFilterChange("emailBounced", e.target.value)}
-        />
+        <div>
+        <h3>Safe to send</h3>
+        <label className="flex items-center p-2 hover:bg-gray-200 ">
+          <input type="checkbox" value="Inactive" className="mr-2" />
+          <button className="rounded">Cold </button>
+        </label>
+        <label className="flex items-center p-2 hover:bg-gray-200">
+          <input type="checkbox" value="Inactive" className="mr-2" />
+          <button className="rounded">Current Client</button>
+        </label>
+        
+        <label className="flex items-center p-2 hover:bg-gray-200">
+          <input type="checkbox" value="Inactive" className="mr-2" />
+          <button className=" rounded">Active Oppurtunity ?</button>
+        </label>
+        
+        <label className="flex items-center p-2 hover:bg-gray-200">
+          <input type="checkbox" value="Inactive" className="mr-2" />
+          <button className="rounded">Death Oppurtunity</button>
+        </label>
+        <label className="flex items-center p-2 hover:bg-gray-200">
+          <input type="checkbox" value="Inactive" className="mr-2" />
+          <button className=" rounded">Do not Prospect</button>
+        </label>
+      </div>
       ),
-      filterKey: "emailBounced",
+      filterKey: "Stages",
     },
     {
       title: "Signals",
@@ -607,7 +636,7 @@ function PeopleSearch() {
 
   return (
     <>
-      <div className=" bg-gray-100 flex">
+      <div className="  flex">
         {filterVisible && (
           <div className={`w-1/4 bg-white shadow-md p-4  ${isCollapsed ? "-ml-44" : "ml-5"} ${isCollapsed ? "mr-2" : "mr-5"}mx-4 my-6 rounded overflow-y-auto max-h-screen`}>
             <div className="flex  mb-4">
@@ -686,39 +715,7 @@ function PeopleSearch() {
           </div>
         )}
 
-        {/* <div className="flex-1 p-4">
-          <div className="flex justify-end mb-4">
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600"
-              onClick={handleSendClick}
-            >
-              Send Email
-            </button>
-          </div>
-          <div className="bg-white rounded-md border border-gray-300 p-4">
-            {emailList.length === 0 ? (
-              <div className="text-center text-gray-500">No emails found.</div>
-            ) : (
-              <ul className="divide-y divide-gray-200">
-                {emailList.map((email, index) => (
-                  <li key={email._id} className="py-2 flex items-center">
-                    <input
-                      key={email._id}
-                      type="checkbox"
-                      className="mr-2"
-                      checked={selectedEmails.includes(email._id)}
-                      onChange={() => toggleSelectEmail(email._id)}
-                    />
-                    <div className="flex-1">
-                      {email.Listname}: {email.email}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div> */}
-
+        
         <div className="flex-1 p-4">
           <div className="bg-white">
             <div className="flex items-center mb-4">
