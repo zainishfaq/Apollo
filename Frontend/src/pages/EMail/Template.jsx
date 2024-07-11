@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import GetTemplateEmail from "./GetTemplateEmail";
 import { NavLink } from "react-router-dom";
+import { useSidebarCollapseContext } from '../../Context/SidebarCollapseContext';
 
 const EmailTemplate = () => {
   const [formData, setFormData] = useState({
@@ -97,14 +98,14 @@ const EmailTemplate = () => {
   const handleCloseEmailPopup = () => {
     setShowEmailPopup(false);
   };
+  const { isCollapsed } = useSidebarCollapseContext();
 
   return (
     <>
       {value ? (
-        <div className="py-4 flex">
+        <div className={`py-4  ${isCollapsed ? "-ml-40": "-ml-5" } flex`}>
           <div
-            className="border bg-white px-4 py-4 mx-6"
-            style={{ width: "40rem" }}
+            className={`border bg-white px-4 py-4 mx-6 ${isCollapsed? "w-[700px]": "w-[500px]"} `}
           >
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
@@ -123,7 +124,7 @@ const EmailTemplate = () => {
                   />
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-2">
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-gray-700">
                       File:
@@ -136,7 +137,7 @@ const EmailTemplate = () => {
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 gap-1">
                     <label className="block text-sm font-medium text-gray-700">
                       Tags:
                     </label>
@@ -172,8 +173,7 @@ const EmailTemplate = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    style={{ width: "34rem" }}
+                    className="w-[460px] p-2 border border-gray-300 rounded-md"
                     required
                   />
                 </div>
@@ -186,8 +186,7 @@ const EmailTemplate = () => {
                     name="body"
                     value={formData.body}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded-md h-32"
-                    style={{ width: "34rem", height: "24rem" }}
+                    className="w-[460px] p-2 border border-gray-300 rounded-md h-32"
                     required
                   ></textarea>
                 </div>

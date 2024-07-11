@@ -7,7 +7,8 @@ import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaArrowDown } from "react-icons/fa6";
-import { SearchIcon } from "@heroicons/react/solid"; // Make sure to import the icon
+import { SearchIcon } from "@heroicons/react/solid";
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext'; // Make sure to import the icon
 
 import {
   AiOutlineUser,
@@ -47,27 +48,47 @@ function Sequences() {
     {
       title: "Own By",
       icon: <AiOutlineFile className="w-5 h-5 text-gray-700" />,
-      content: <p>Sequence content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Tags",
       icon: <AiOutlineTeam className="w-5 h-5 text-gray-700" />,
-      content: <p>Contact list content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Status",
       icon: <AiOutlineCalendar className="w-5 h-5 text-gray-700" />,
-      content: <p>Date range content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Performance",
       icon: <AiOutlineUser className="w-5 h-5 text-gray-700" />,
-      content: <p>Not sent reason content here...</p>,
+      content: <input 
+      type="text" 
+      placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
     {
       title: "Folders",
       icon: <AiOutlineSearch className="w-5 h-5 text-gray-700" />,
-      content: <p>Email opened content here...</p>,
+      content: <input 
+      type="file" 
+      // placeholder="Enter email content here..." 
+      className="border border-gray-300 p-2 rounded-md w-full" 
+    />,
     },
   ];
 
@@ -87,9 +108,11 @@ function Sequences() {
     return location.pathname.startsWith(path);
   };
 
+  const { isCollapsed } = useSidebarCollapseContext();
+
   return (
     <>
-      <div className="fixed top-16 left-64 right-0 bg-white z-40">
+        <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}>
         <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-black mt-4">Sequence</h2>
@@ -217,7 +240,7 @@ function Sequences() {
                   <div
                     className="flex items-center justify-center h-64 border border-dashed bg-white border-gray-300 rounded-md"
                     style={{ height: "35rem" }}
-                  >
+                   >
                     <div className="text-center">
                       <div className="text-2xl text-gray-500">
                         No emails here!
@@ -234,7 +257,7 @@ function Sequences() {
               </div>
             </div>
             {/* Show Create Sequence Popup */}
-            {showCreateSequence && (
+            {/* {showCreateSequence && (
               <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
                 <CreateSequence />
                 <button
@@ -244,7 +267,7 @@ function Sequences() {
                   Close
                 </button>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
