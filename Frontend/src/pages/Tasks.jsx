@@ -154,7 +154,7 @@ function Tasks() {
             <span>Associated with</span>
             <span>Due Date</span>
             <span>Priority</span>
-            <span>Owner</span>
+            <span>Owners</span>
           </div>
           <div className="text-center py-8">
             <div className="flex flex-col items-center justify-center">
