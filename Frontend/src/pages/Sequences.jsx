@@ -7,7 +7,8 @@ import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/solid";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaArrowDown } from "react-icons/fa6";
-import { SearchIcon } from "@heroicons/react/solid"; // Make sure to import the icon
+import { SearchIcon } from "@heroicons/react/solid";
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext'; // Make sure to import the icon
 
 import {
   AiOutlineUser,
@@ -87,9 +88,11 @@ function Sequences() {
     return location.pathname.startsWith(path);
   };
 
+  const { isCollapsed } = useSidebarCollapseContext();
+
   return (
     <>
-      <div className="fixed top-16 left-64 right-0 bg-white z-40">
+        <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}>
         <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-black mt-4">Sequence</h2>

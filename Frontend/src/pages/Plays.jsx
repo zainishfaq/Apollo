@@ -98,7 +98,7 @@ function Plays() {
         className={`fixed w-full ${isCollapsed ? "ml-10" : "ml-56"} mt-28 p-4`}
         ref={filterRef}
       >
-        <div className="flex gap-4 h-496">
+        <div className="flex gap-4 h-[500px]">
           <div className="w-1/4 bg-white border rounded-md shadow-sm overflow-y-auto">
             <h3 className="text-lg font-semibold m-3 mb-5">Filters</h3>
             <div className="mb-4 relative">
