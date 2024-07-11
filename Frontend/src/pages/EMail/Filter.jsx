@@ -63,33 +63,58 @@ function FilterTemplate() {
       title: "Sequences",
       icon: <AiOutlineFile className="w-5 h-5 text-gray-700" />,
       content: (
-        <input
-          type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter sequence..."
-        />
+        <div className="flex flex-col">
+          <h3>Include Sequence</h3>
+          <input
+            type="text"
+            className="w-full px-2 py-2 my-3 rounded-md focus:ring-indigo-500 border focus:border-indigo-500"
+            placeholder="Enter Contact Lists..."
+          />
+          <h3>Exclude Sequence</h3>
+
+          <input
+            type="text"
+            className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 border focus:border-indigo-500"
+            placeholder="Enter Contact Lists..."
+          />
+        </div>
       ),
     },
     {
       title: "Contact Lists",
       icon: <AiOutlineTeam className="w-5 h-5 text-gray-700" />,
       content: (
-        <input
-          type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter Contact Lists..."
-        />
+        <div className="flex flex-col">
+          <h3 className="text-blue-600">Contact List</h3>
+          <input
+            type="text"
+            className="w-full px-2 py-2  my-1 rounded-md focus:ring-indigo-500 border focus:border-indigo-500"
+            placeholder="Enter Contact Lists..."
+          />
+        </div>
       ),
     },
     {
       title: "Date Range",
       icon: <AiOutlineCalendar className="w-5 h-5 text-gray-700" />,
       content: (
-        <input
-          type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter date range..."
-        />
+        <div className="flex flex-col">
+          <input
+            type="text"
+            className="w-full px-2 py-2 rounded-md border focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="Enter date range..."
+          />
+          <div className="flex flex-row space-x-2">
+            <input
+              type="date"
+              className="w-1/2 px-2 py-1  border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <input
+              type="date"
+              className="w-1/2 px-2 py-1 border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+        </div>
       ),
     },
     {
@@ -107,11 +132,20 @@ function FilterTemplate() {
       title: "Email Opened",
       icon: <AiOutlineSearch className="w-5 h-5 text-gray-700" />,
       content: (
+        <div className="flex flex-col">
+          <h2>Opened Email</h2>
+          <input
+          type="text"
+          className="w-full px-2 py-2  border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+          // placeholder="Email Opened"
+        />
+         <h2>Opened at_least Email</h2>
         <input
           type="text"
-          className="w-full px-2 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+          className="w-full px-2 py-2  border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="Email Opened"
         />
+        </div>
       ),
     },
   ];
@@ -228,7 +262,7 @@ function FilterTemplate() {
               </div>
             </div>
             <hr />
-            <div>
+            <div className="">
               {boolean === "Total" ? (
                 <TotalEmail />
               ) : boolean === "Scheduled" ? (
