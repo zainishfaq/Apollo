@@ -137,22 +137,9 @@ function Plays() {
           <div
             className={`w-3/4 bg-gray-100 border rounded-md shadow-sm ${
               isCollapsed ? "mr-16" : "mr-60"
-            } overflow-y-auto`} 
+            } overflow-y-auto`}
           >
-            <div className={`bg-white flex items-center justify-between p-4 border-b border-gray-200 fixed top-36 rounded-sm ml-0 ${isCollapsed ? "w-full": "w-[832px]" } mr-1 z-50`}>
-              <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600 bg-gray-400 p-2" />
-              <div className="flex items-center gap-4">
-                <div className="flex gap-2">
-                  <button className="flex items-center text-gray-400   bg-white border border-black text-sm  px-2 py-1 rounded-lg hover:bg-gray-300">
-                    <TfiWrite />
-                  </button>
-                  <button className="bg-white flex justify-center items-center text-sm border border-black text-gray-400 px-4 py-2 rounded-md hover:bg-gray-300">
-                    Last Modified
-                     <IoCaretDown className="ml-2" />
-                  </button>
-                </div>
-              </div>
-            </div>
+
             <div className="p-4 mt-16"> {/* Adjust margin-top to ensure content is below fixed navbar */}
               <div className="flex flex-col justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold mx-56 mt-20 mb-4">
