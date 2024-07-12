@@ -137,9 +137,9 @@ function Plays() {
           <div
             className={`w-3/4 bg-gray-100 border rounded-md shadow-sm ${
               isCollapsed ? "mr-16" : "mr-60"
-            } overflow-y-auto`}
+            } overflow-y-auto`} 
           >
-            <div className={`bg-white flex items-center justify-between p-4 border-b border-gray-200 fixed top-36 rounded-sm ml-0 ${isCollapsed ? "w-[963px]": "w-[832px]" } mr-1 z-50`}>
+            <div className={`bg-white flex items-center justify-between p-4 border-b border-gray-200 fixed top-36 rounded-sm ml-0 ${isCollapsed ? "w-full": "w-[832px]" } mr-1 z-50`}>
               <input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600 bg-gray-400 p-2" />
               <div className="flex items-center gap-4">
                 <div className="flex gap-2">

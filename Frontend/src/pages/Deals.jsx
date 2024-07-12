@@ -24,7 +24,7 @@ function Deals() {
     <div className={`mt-20 ${isCollapsed ? "ml-8" : "ml-52"} w-auto -mb-10 bg-white -mr-6`}>
     <div className="flex flex-1 h-screen">
   {/* Left half */}
-  <div className="w-1/2 bg-white h-full">
+  <div className="w-1/2 bg-black h-full">
   {/* <img src={Deal} alt="Deal Image" style={{ width: '98%', height: '100%' }} className=" rounded-sm shadow-lg mb-1 ml-2 mt-0" />  */}
   </div>
 
