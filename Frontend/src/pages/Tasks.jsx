@@ -70,11 +70,7 @@ function Tasks() {
           <TaskDueDate/>
           </div>
 
-          {/* Scores */}
-          <div>
-          <TaskStatus/>
-          </div>
-
+       
           {/* Additional Fields */}
           <div>
           <Sequences/>
@@ -82,6 +78,9 @@ function Tasks() {
 
           <div> 
           <TaskPriority/>
+          </div>
+          <div>
+          <TaskStatus/>
           </div>
 
           <div>
@@ -100,21 +99,12 @@ function Tasks() {
           <TaskStatus/>
           </div> 
 
-          <div>
-          <TaskStatus/>
-          </div>
+         
 
           <div>
           <TaskStatus/>
           </div>
 
-          <div>
-          <TaskStatus/>
-          </div>
-
-          <div>
-          <TaskStatus/>
-          </div>
         </div> 
         {/* Fixed More Filters Button */}
         <div className="p-4 border-t border-gray-200 bg-white sticky bottom-0">
@@ -125,7 +115,7 @@ function Tasks() {
       {/* Main Content */}
       <div className="flex-1 bg-white p-4">
         <div className="flex items-center mb-4">
-          <button className="flex text-sm w-28 h-8 items-center bg-white text-black border border-black p-2 rounded">
+          <button className="flex text-sm w-30 h-8 items-center bg-white text-black border border-black p-2 rounded">
             <FaSearch className="mr-2" />
             Hide Filters
           </button>

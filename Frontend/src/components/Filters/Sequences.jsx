@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { IoCaretDown } from "react-icons/io5";
 import { GoChevronUp } from "react-icons/go";
-import { IoIosVideocam } from "react-icons/io";
-
+import { AiOutlineSend } from "react-icons/ai";
 const Sequences = ({ selectedSequences, handleSequencesChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
@@ -21,7 +20,7 @@ const Sequences = ({ selectedSequences, handleSequencesChange }) => {
         onClick={toggleDropdown}
         className=" text-sm font-medium mb-1 w-full -mt-4 border-b-2 border-gray-200 p-3 pl-4 focus:outline-none flex justify-between items-center hover:bg-gray-300 hover:text-blue-500"
       >
-        <IoIosVideocam className="text-sm" />{" "}
+        <AiOutlineSend className="text-sm" />{" "}
         <span className="-ml-36">Sequences</span>
         {isOpen ? <GoChevronUp className="text-sm" /> : <IoCaretDown className="text-sm" />}
       </label>
