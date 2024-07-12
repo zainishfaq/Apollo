@@ -27,6 +27,7 @@ import { MdFilterListOff } from "react-icons/md";
 import TotalSearchEmail from "./TotalEmail";
 import ScheduleSearchEmail from "./ScheduleEmail";
 import NetNewEmail from "./NetNewEmail";
+import { useSidebarCollapseContext } from '../../Context/SidebarCollapseContext';
 
 function CompaniesSearch() {
   const [selectedEmails, setSelectedEmails] = useState([]);
@@ -80,6 +81,7 @@ function CompaniesSearch() {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Manage popup state
   const [savedCompanies, setSavedCompanies] = useState([]); // State for saved companies
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const { isCollapsed } = useSidebarCollapseContext();
 
   const emailOptions = [
     { value: "email1@example.com", label: "Email 1" },
@@ -404,10 +406,13 @@ function CompaniesSearch() {
     },
    
   ];
+  
+
+  
 
   return (
     <>
-      <div className="  flex">
+      <div className= {`flex ${isCollapsed? "-ml-44": "ml-2"}`}>
         <div className="w-1/4 bg-white shadow-md p-4 mx- my-4 rounded overflow-y-auto max-h-screen">
           <div className="flex  mb-4">
             <button

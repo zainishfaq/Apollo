@@ -1,7 +1,10 @@
 import React from "react";
 import { AiOutlineUser } from "react-icons/ai";
+import { useSidebarCollapseContext } from '../../Context/SidebarCollapseContext';
+
 
 function SavedListSearch() {
+  const { isCollapsed } = useSidebarCollapseContext();
   const people = [
     {
       name: "fff",
@@ -12,7 +15,7 @@ function SavedListSearch() {
   ];
   return (
     <>
-      <div className="container mx-auto px-4 py-2">
+      <div className={`container mx-auto px-4 ${isCollapsed? "-ml-44": "ml-2"} py-2 ${isCollapsed? "w-[2000px]": "w-[1100px]"}`}>
         <div className="flex items-center space-x-4 p-2 border border-gray-300 rounded-md bg-white justify-between">
           <div className="flex">
             <div>
