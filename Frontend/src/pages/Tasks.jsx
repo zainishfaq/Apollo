@@ -11,13 +11,16 @@ import Sequences from '../components/Filters/Sequences';
 import TaskPriority from '../components/Filters/TaskPriority';
 import TaskCreatedFrom from '../components/Filters/TaskCreatedFrom';
 import TaskStarred from '../components/Filters/TaskStarred';
+import { useSidebarCollapseContext } from '../Context/SidebarCollapseContext';
+
 
 function Tasks() {
- 
+  
+  const { isCollapsed } = useSidebarCollapseContext();
 
   return (
     <>
-    <div className="fixed top-16 left-64 right-0 bg-white z-40"> {/* Position fixed for the navigation bar */}
+    <div className={`fixed top-16 ${isCollapsed ? 'left-18' : 'left-64'} right-0 bg-white z-40`}> {/* Position fixed for the navigation bar */}
     <div className="text-2xl font-medium bg-white text-black -mt-4 -mr-4 -ml-4 border-b border-gray-200 px-4">
         <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-black mt-4">Tasks</h2>
@@ -28,7 +31,7 @@ function Tasks() {
     </div>
 
 
-    <div className="flex h-screen ml-56 mt-24">
+    <div className={`flex h-screen ${isCollapsed? "ml-20": "ml-60"} mt-24`}>
       {/* Sidebar */}
       <div className="w-72 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
