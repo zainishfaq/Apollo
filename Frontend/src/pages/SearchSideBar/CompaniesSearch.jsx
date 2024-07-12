@@ -484,38 +484,7 @@ function CompaniesSearch() {
           </div>
         </div>
 
-        {/* <div className="flex-1 p-4">
-          <div className="flex justify-end mb-4">
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600"
-              onClick={handleSendClick}
-            >
-              Send Email
-            </button>
-          </div>
-          <div className="bg-white rounded-md border border-gray-300 p-4">
-            {emailList.length === 0 ? (
-              <div className="text-center text-gray-500">No emails found.</div>
-            ) : (
-              <ul className="divide-y divide-gray-200">
-                {emailList.map((email, index) => (
-                  <li key={email._id} className="py-2 flex items-center">
-                    <input
-                      key={email._id}
-                      type="checkbox"
-                      className="mr-2"
-                      checked={selectedEmails.includes(email._id)}
-                      onChange={() => toggleSelectEmail(email._id)}
-                    />
-                    <div className="flex-1">
-                      {email.Listname}: {email.email}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div> */}
+        
 
         <div className="flex-1 p-4">
           <div className="bg-white">

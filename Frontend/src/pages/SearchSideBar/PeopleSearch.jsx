@@ -100,64 +100,64 @@ function PeopleSearch() {
     { value: "email3@example.com", label: "Email 3" },
   ];
 
-  useEffect(() => {
-    const fetchFilterOptions = async () => {
-      try {
-        const [
-          listsRes,
-          emailStatusRes,
-          notSentReasonRes,
-          companiesRes,
-          countryRes,
-          industryRes,
-          locationRes,
-          buyingIntentRes,
-        ] = await Promise.all([
-          axios.get("http://localhost:3000/getemail", {
-            params: { company: filter.company },
-          }),
-          axios.get("http://localhost:3000/email-status"),
-          axios.get("http://localhost:3000/not-sent-reasons"),
-          axios.get("http://localhost:3000/unique-companies"),
-          axios.get("http://localhost:3000/getmail", {
-            params: { industry: filter.industry },
-          }),
-          axios.get("http://localhost:3000/locations"),
-          axios.get("http://localhost:3000/buying-intents"),
-        ]);
+  // useEffect(() => {
+  //   const fetchFilterOptions = async () => {
+  //     try {
+  //       const [
+  //         listsRes,
+  //         emailStatusRes,
+  //         notSentReasonRes,
+  //         companiesRes,
+  //         countryRes,
+  //         industryRes,
+  //         locationRes,
+  //         buyingIntentRes,
+  //       ] = await Promise.all([
+  //         axios.get("http://localhost:3000/getemail", {
+  //           params: { company: filter.company },
+  //         }),
+  //         axios.get("http://localhost:3000/email-status"),
+  //         axios.get("http://localhost:3000/not-sent-reasons"),
+  //         axios.get("http://localhost:3000/unique-companies"),
+  //         axios.get("http://localhost:3000/getmail", {
+  //           params: { industry: filter.industry },
+  //         }),
+  //         axios.get("http://localhost:3000/locations"),
+  //         axios.get("http://localhost:3000/buying-intents"),
+  //       ]);
 
-        setFilterOptions({
-          lists: listsRes.data,
-          emailStatusOptions: emailStatusRes.data,
-          notSentReasonOptions: notSentReasonRes.data,
-          companies: companiesRes.data.map((company) => ({
-            value: company,
-            label: company,
-          })),
-          countries: countryRes.data.map((country) => ({
-            value: country,
-            label: country,
-          })),
-          industries: industryRes.data.map((industry) => ({
-            value: industry,
-            label: industry,
-          })),
-          locations: locationRes.data.map((location) => ({
-            value: location,
-            label: location,
-          })),
-          buyingIntents: buyingIntentRes.data.map((intent) => ({
-            value: intent,
-            label: intent,
-          })),
-        });
-      } catch (error) {
-        console.error("Error fetching filter options:", error);
-      }
-    };
+  //       setFilterOptions({
+  //         lists: listsRes.data,
+  //         emailStatusOptions: emailStatusRes.data,
+  //         notSentReasonOptions: notSentReasonRes.data,
+  //         companies: companiesRes.data.map((company) => ({
+  //           value: company,
+  //           label: company,
+  //         })),
+  //         countries: countryRes.data.map((country) => ({
+  //           value: country,
+  //           label: country,
+  //         })),
+  //         industries: industryRes.data.map((industry) => ({
+  //           value: industry,
+  //           label: industry,
+  //         })),
+  //         locations: locationRes.data.map((location) => ({
+  //           value: location,
+  //           label: location,
+  //         })),
+  //         buyingIntents: buyingIntentRes.data.map((intent) => ({
+  //           value: intent,
+  //           label: intent,
+  //         })),
+  //       });
+  //     } catch (error) {
+  //       console.error("Error fetching filter options:", error);
+  //     }
+  //   };
 
-    fetchFilterOptions();
-  }, [filter.company, filter.industry]);
+  //   fetchFilterOptions();
+  // }, [filter.company, filter.industry]);
 
   const fetchData = async () => {
     try {
