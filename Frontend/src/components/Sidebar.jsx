@@ -51,7 +51,7 @@ const Sidebar = () => {
                         <span className="text-sm">Prospect & Enrich</span>
                     </li>
                 )}
-                <NavLink to='/Search' className="flex items-center">
+                <NavLink to='/Dashbord/Search' className="flex items-center">
                     <li className={`px-${isCollapsed ? '4' : '6'} py-2 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer w-full ${location.pathname === '/Search' ? 'bg-blue-100' : ''}`}>
                         <LuSearch className="text-gray-600 mr-3" style={{ width: ICON_SIZE, height: ICON_SIZE, minWidth: ICON_SIZE }} />
                         <span className={`transition-all duration-300 text-sm font-semibold ${isCollapsed ? 'hidden' : ''}`}>Search</span>

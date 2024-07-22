@@ -99,7 +99,7 @@ const AppRoute = () => {
           <Route path="CSV" element={<CSV />} />
           <Route path="JobChangeAlerts" element={<JobChangesAlert />} />
         </Route>
-        <Route path="Search" element={<Search />}>
+        <Route path="Dashbord/Search" element={<Search />}>
           <Route index element={<PeopleSearch />} />
           <Route path="PeopleSearch" element={<PeopleSearch />} />
           <Route path="CompaniesSearch" element={<CompaniesSearch />} />
